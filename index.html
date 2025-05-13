@@ -271,9 +271,15 @@
         </div>
 
         <!-- Progress Bar -->
-        <input id="progressBar" type="range" min="0" max="100" value="0"
-               class="w-full h-1 mt-1 bg-gray-200 rounded appearance-none accent-blue-500 cursor-pointer">
-
+<div class="relative w-full h-1 mt-1 bg-gray-200 rounded cursor-pointer group">
+  <!-- Background (abu-abu) -->
+  <div class="absolute top-0 left-0 h-full bg-gray-300 w-full rounded"></div>
+  <!-- Fill (putih atau sesuai warna tema) -->
+  <div id="progressBarFill" class="absolute top-0 left-0 h-full bg-white w-0 rounded" style="width: 0%"></div>
+  <!-- Click Indicator -->
+  <div id="progressBarIndicator" class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full hidden group-hover:block" style="left: 0;"></div>
+</div>
+        
         <p id="musicStatus" class="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to play</p>
       </div>
     </div>
