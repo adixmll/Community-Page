@@ -210,9 +210,9 @@ window.toggleGroupDetail = toggleGroupDetail;
 const toggleBtn = document.getElementById('darkModeToggle');
     const body = document.body;
 
+    toggleBtn.querySelector('span').classList.add('transition-all');
     // Cek preferensi sistem atau simpan sebelumnya
-    const isDarkMode = localStorage.getItem('darkMode') === 'true' ||
-                       (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
     if (isDarkMode) {
       body.classList.add('dark-mode');
