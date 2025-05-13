@@ -232,3 +232,39 @@ const toggleBtn = document.getElementById('darkModeToggle');
       
       localStorage.setItem('darkMode', isActive);
     });
+
+  const music = document.getElementById('backgroundMusic');
+  const toggleMusicBtn = document.getElementById('toggleMusicBtn');
+  const musicIcon = document.getElementById('musicIcon');
+  const musicStatus = document.getElementById('musicStatus');
+
+  // Auto-play musik saat halaman dimuat
+  window.addEventListener('load', () => {
+    music.volume = 0.3; // Set volume rendah agar tidak terlalu keras
+    music.play().catch(e => {
+      console.log("Autoplay ditolak. Pengguna harus klik dulu.");
+      musicStatus.textContent = "Click to play music";
+      toggleMusicBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+      toggleMusicBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+      toggleMusicBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
+      toggleMusicBtn.querySelector('span').textContent = "Play";
+    });
+  });
+
+  toggleMusicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicIcon.classList.replace('fa-play', 'fa-pause');
+      toggleMusicBtn.querySelector('span').textContent = "Pause";
+      toggleMusicBtn.classList.replace('bg-green-500', 'bg-blue-500');
+      toggleMusicBtn.classList.replace('hover:bg-green-600', 'hover:bg-blue-600');
+      musicStatus.textContent = "Music Playing";
+    } else {
+      music.pause();
+      musicIcon.classList.replace('fa-pause', 'fa-play');
+      toggleMusicBtn.querySelector('span').textContent = "Play";
+      toggleMusicBtn.classList.replace('bg-blue-500', 'bg-green-500');
+      toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-green-600');
+      musicStatus.textContent = "Music Paused";
+    }
+  });
