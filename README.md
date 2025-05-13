@@ -65,9 +65,7 @@ And trust me — we notice.
 
 ## 📎 Stay Connected
 
-<a href="https://www.instagram.com/zuanxfnd" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="20" /> instagram.com/zuanxfnd
-</a>
+[![Instagram](https://img.shields.io/badge/Instagram-%40zuanxfnd-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/zuanxfnd)
 
 ---
 
