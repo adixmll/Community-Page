@@ -1,4 +1,4 @@
-p align="center">
+<p align="center">
   <img src="https://files.catbox.moe/xvqkzd.png" alt="Calestia Community Page" width="100%" />
 </p>
 
