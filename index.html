@@ -255,27 +255,39 @@
   <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 dark:bg-[#2a2a40] dark:border-gray-700 transition-colors duration-300 max-w-md w-full">
     <div class="flex items-center space-x-4">
       <!-- Album Art -->
-      <img src="https://files.catbox.moe/your-music-cover.jpg " 
-           alt="Album Cover" 
+      <img src="https://files.catbox.moe/8olprf.jpg " 
+           alt="About You - The 1975" 
            class="w-12 h-12 rounded object-cover shadow-sm">
 
       <!-- Info -->
       <div class="flex-1 min-w-0">
         <p id="musicTitle" class="font-semibold text-gray-800 dark:text-gray-200 truncate">About You</p>
         <p id="musicArtist" class="text-xs text-gray-500 dark:text-gray-400">The 1975</p>
+
+        <!-- Durasi dan Waktu -->
+        <div class="flex justify-between text-xs text-gray-500 mt-1">
+          <span id="currentTime">00:00</span>
+          <span id="duration">--:--</span>
+        </div>
+
+        <!-- Progress Bar -->
+        <input id="progressBar" type="range" min="0" max="100" value="0"
+               class="w-full h-1 mt-1 bg-gray-200 rounded appearance-none accent-blue-500 cursor-pointer">
+
         <p id="musicStatus" class="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to play</p>
       </div>
-
-      <!-- Button -->
-      <button id="toggleMusicBtn"
-              class="px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition text-sm flex items-center">
-        <i id="musicIcon" class="fas fa-play mr-1"></i> Play
-      </button>
     </div>
+
+    <!-- Tombol Play/Pause -->
+    <button id="toggleMusicBtn"
+            class="mt-3 px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition text-sm flex items-center mx-auto">
+      <i id="musicIcon" class="fas fa-play mr-1"></i> Play
+    </button>
   </div>
 </section>
 
-<audio id="backgroundMusic" src="https://files.catbox.moe/rrwrw6.mp3 " loop></audio>
+<!-- Audio -->
+<audio id="backgroundMusic" src="https://files.catbox.moe/rrwrw6.mp3 " preload="auto"></audio>
     
     <!-- Groups Section -->
     <section class="mt-12">
