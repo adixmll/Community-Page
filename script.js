@@ -238,19 +238,28 @@ const toggleBtn = document.getElementById('darkModeToggle');
   const musicIcon = document.getElementById('musicIcon');
   const musicStatus = document.getElementById('musicStatus');
 
-  // Auto-play musik saat halaman dimuat
-  window.addEventListener('load', () => {
-    music.volume = 0.3; // Set volume rendah agar tidak terlalu keras
-    music.play().catch(e => {
-      console.log("Autoplay ditolak. Pengguna harus klik dulu.");
-      musicStatus.textContent = "Click to play music";
-      toggleMusicBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
-      toggleMusicBtn.classList.add('bg-green-500', 'hover:bg-green-600');
-      toggleMusicBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
-      toggleMusicBtn.querySelector('span').textContent = "Play";
-    });
-  });
+  let hasInteracted = false;
 
+  // Play musik saat pengguna klik di mana saja untuk pertama kalinya
+  window.addEventListener('click', function onFirstInteraction() {
+    if (!hasInteracted) {
+      music.volume = 0.3;
+      music.play().then(() => {
+        hasInteracted = true;
+        musicStatus.textContent = "Music Playing";
+        toggleMusicBtn.classList.remove('hidden');
+        console.log("Musik dimainkan setelah interaksi pengguna.");
+      }).catch(e => {
+        console.error("Gagal memulai musik:", e);
+        musicStatus.textContent = "Silakan coba klik lagi.";
+      });
+
+      // Hapus event listener setelah digunakan sekali
+      window.removeEventListener('click', onFirstInteraction);
+    }
+  }, { once: true }); // Hanya sekali jalan
+
+  // Toggle Play / Pause
   toggleMusicBtn.addEventListener('click', () => {
     if (music.paused) {
       music.play();
