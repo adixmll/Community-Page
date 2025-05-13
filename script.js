@@ -247,11 +247,10 @@ function onFirstInteraction() {
     music.play().then(() => {
       hasInteracted = true;
       musicStatus.textContent = "Music Playing";
-      toggleMusicBtn.classList.remove('hidden');
       musicIcon.classList.replace('fa-play', 'fa-pause');
       toggleMusicBtn.querySelector('span').textContent = "Pause";
-      toggleMusicBtn.classList.replace('bg-green-500', 'bg-blue-500');
-      toggleMusicBtn.classList.replace('hover:bg-green-600', 'hover:bg-blue-600');
+      toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
+      toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
 
       console.log("Musik dimainkan setelah klik tombol.");
     }).catch(e => {
@@ -269,17 +268,17 @@ function onFirstInteraction() {
 function toggleMusic() {
   if (music.paused) {
     music.play();
-    musicIcon.classList.replace('fa-pause', 'fa-play');
+    musicIcon.classList.replace('fa-play', 'fa-pause');
     toggleMusicBtn.querySelector('span').textContent = "Pause";
-    toggleMusicBtn.classList.replace('bg-green-500', 'bg-blue-500');
-    toggleMusicBtn.classList.replace('hover:bg-green-600', 'hover:bg-blue-600');
+    toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
+    toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
     musicStatus.textContent = "Music Playing";
   } else {
     music.pause();
-    musicIcon.classList.replace('fa-play', 'fa-pause');
+    musicIcon.classList.replace('fa-pause', 'fa-play');
     toggleMusicBtn.querySelector('span').textContent = "Play";
-    toggleMusicBtn.classList.replace('bg-blue-500', 'bg-green-500');
-    toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-green-600');
+    toggleMusicBtn.classList.replace('bg-red-500', 'bg-blue-500');
+    toggleMusicBtn.classList.replace('hover:bg-red-600', 'hover:bg-blue-600');
     musicStatus.textContent = "Music Paused";
   }
 }
