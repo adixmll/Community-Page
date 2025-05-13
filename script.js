@@ -185,24 +185,6 @@ function hideLoader() {
       document.documentElement.style.scrollBehavior = 'smooth';
       window.scrollTo({ top: scrollPosition, behavior: 'auto' });
 
-      // Mainkan musik setelah loader selesai
-      const music = document.getElementById('backgroundMusic');
-      const status = document.getElementById('musicStatus');
-      const toggleBtn = document.getElementById('toggleMusicBtn');
-
-      music.volume = 0.3;
-      music.play().then(() => {
-        status.textContent = "Music Playing";
-        toggleBtn.classList.remove('hidden');
-      }).catch(e => {
-        console.warn("Autoplay ditolak oleh browser.");
-        status.textContent = "Click to play music";
-        toggleBtn.classList.remove('hidden');
-        toggleBtn.querySelector('span').textContent = "Play";
-        toggleBtn.classList.replace('bg-blue-500', 'bg-green-500');
-        toggleBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
-      });
-
       initGroups();
     }, 500);
   }
@@ -251,27 +233,37 @@ const toggleBtn = document.getElementById('darkModeToggle');
       localStorage.setItem('darkMode', isActive);
     });
 
-  document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('toggleMusicBtn');
   const music = document.getElementById('backgroundMusic');
-  const icon = document.getElementById('musicIcon');
-  const status = document.getElementById('musicStatus');
+  const toggleMusicBtn = document.getElementById('toggleMusicBtn');
+  const musicIcon = document.getElementById('musicIcon');
+  const musicStatus = document.getElementById('musicStatus');
 
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      if (music.paused) {
-        music.play();
-        icon.classList.replace('fa-play', 'fa-pause');
-        toggleBtn.querySelector('span').textContent = "Pause";
-        toggleBtn.classList.replace('bg-green-500', 'bg-blue-500');
-        status.textContent = "Music Playing";
-      } else {
-        music.pause();
-        icon.classList.replace('fa-pause', 'fa-play');
-        toggleBtn.querySelector('span').textContent = "Play";
-        toggleBtn.classList.replace('bg-blue-500', 'bg-green-500');
-        status.textContent = "Music Paused";
-      }
+  // Auto-play musik saat halaman dimuat
+  window.addEventListener('load', () => {
+    music.volume = 0.3; // Set volume rendah agar tidak terlalu keras
+    music.play().catch(e => {
+      musicStatus.textContent = "Click to play music";
+      toggleMusicBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+      toggleMusicBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+      toggleMusicBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
+      toggleMusicBtn.querySelector('span').textContent = "Play";
     });
-  }
-});
+  });
+
+  toggleMusicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicIcon.classList.replace('fa-play', 'fa-pause');
+      toggleMusicBtn.querySelector('span').textContent = "Pause";
+      toggleMusicBtn.classList.replace('bg-green-500', 'bg-blue-500');
+      toggleMusicBtn.classList.replace('hover:bg-green-600', 'hover:bg-blue-600');
+      musicStatus.textContent = "Music Playing";
+    } else {
+      music.pause();
+      musicIcon.classList.replace('fa-pause', 'fa-play');
+      toggleMusicBtn.querySelector('span').textContent = "Play";
+      toggleMusicBtn.classList.replace('bg-blue-500', 'bg-green-500');
+      toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-green-600');
+      musicStatus.textContent = "Music Paused";
+    }
+  });
