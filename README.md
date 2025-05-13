@@ -1,3 +1,7 @@
+p align="center">
+  <img src="https://files.catbox.moe/xvqkzd.png" alt="Calestia Community Page" width="100%" />
+</p>
+
 <h1 align="center">🌸 Calestia Community Page</h1>
 
 <p align="center">
