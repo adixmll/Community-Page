@@ -234,37 +234,44 @@ const toggleBtn = document.getElementById('darkModeToggle');
     });
 
 const music = document.getElementById('backgroundMusic');
+const progressBar = document.getElementById('progressBar');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
 const toggleMusicBtn = document.getElementById('toggleMusicBtn');
 const musicIcon = document.getElementById('musicIcon');
 const musicStatus = document.getElementById('musicStatus');
 
 let hasInteracted = false;
 
-// Fungsi pertama kali saat tombol diklik
-function onFirstInteraction() {
-  if (!hasInteracted) {
-    music.volume = 0.3;
-    music.play().then(() => {
-      hasInteracted = true;
-      musicStatus.textContent = "Music Playing";
-      musicIcon.classList.replace('fa-play', 'fa-pause');
-      toggleMusicBtn.querySelector('span').textContent = "Pause";
-      toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
-      toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
-
-      console.log("Musik dimainkan setelah klik tombol.");
-    }).catch(e => {
-      console.error("Gagal memulai musik:", e);
-      musicStatus.textContent = "Silakan coba klik lagi.";
-    });
-
-    // Ganti event listener ke toggleMusic
-    toggleMusicBtn.removeEventListener('click', onFirstInteraction);
-    toggleMusicBtn.addEventListener('click', toggleMusic);
-  }
+// Fungsi format detik ke MM:SS
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
 }
 
-// Toggle Play / Pause
+// Update durasi saat metadata tersedia
+music.addEventListener('loadedmetadata', () => {
+  if (!isNaN(music.duration)) {
+    durationEl.textContent = formatTime(music.duration);
+    progressBar.max = Math.floor(music.duration);
+  }
+});
+
+// Update waktu saat musik berjalan
+music.addEventListener('timeupdate', () => {
+  currentTimeEl.textContent = formatTime(music.currentTime);
+  progressBar.value = Math.floor(music.currentTime);
+});
+
+// Ganti waktu musik saat progress bar diklik/digeser
+progressBar.addEventListener('input', () => {
+  if (hasInteracted) {
+    music.currentTime = progressBar.value;
+  }
+});
+
+// Toggle Play/Pause
 function toggleMusic() {
   if (music.paused) {
     music.play();
@@ -283,29 +290,43 @@ function toggleMusic() {
   }
 }
 
+// Interaksi pertama kali
+function onFirstInteraction() {
+  if (!hasInteracted) {
+    music.volume = 0.3;
+    music.play().then(() => {
+      hasInteracted = true;
+      musicStatus.textContent = "Music Playing";
+      musicIcon.classList.replace('fa-play', 'fa-pause');
+      toggleMusicBtn.querySelector('span').textContent = "Pause";
+      toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
+      toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
+    }).catch(e => {
+      console.error("Gagal memulai musik:", e);
+      musicStatus.textContent = "Silakan coba klik lagi.";
+    });
+
+    toggleMusicBtn.removeEventListener('click', onFirstInteraction);
+    toggleMusicBtn.addEventListener('click', toggleMusic);
+  }
+}
+
 // Event listener interaksi awal
 toggleMusicBtn.addEventListener('click', onFirstInteraction);
 
-// Hentikan musik saat halaman akan ditutup atau direfresh
+// Hentikan musik saat tab ditutup
 window.addEventListener('beforeunload', () => {
   if (!music.paused) {
     music.pause();
-    music.currentTime = 0; // Reset jika ingin dimainkan ulang
-    console.log("Musik dihentikan karena halaman ditutup.");
+    music.currentTime = 0;
   }
 });
 
-// Pause musik saat user beralih tab, dan lanjutkan saat kembali
+// Pause saat beralih tab
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'hidden') {
-    if (!music.paused) {
-      music.pause(); // Jeda saat tab tidak aktif
-      console.log("Musik dijeda karena user beralih tab.");
-    }
+    if (!music.paused) music.pause();
   } else {
-    if (hasInteracted && music.paused) {
-      music.play(); // Lanjutkan jika sebelumnya pernah main
-      console.log("Musik dilanjutkan karena user kembali.");
-    }
+    if (hasInteracted && music.paused) music.play();
   }
 });
