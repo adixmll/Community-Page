@@ -3,6 +3,8 @@
 Welcome to the heart of **Calestia** — a gentle space where Calestars gather, glow, and grow together.  
 This isn’t just a page. It’s a universe stitched with warmth, made for every soul that ever found comfort in a reply from her.
 
+---
+
 ## 💖 What's Inside?
 
 Carefully curated links just for you:
@@ -13,7 +15,8 @@ Carefully curated links just for you:
 - 📢 **Official Channel** – For heartfelt updates and loving reminders  
 - 🌸 **Premium & Rent Web** – Check our sweet offerings and support the journey  
 
-Every link is a doorway to something real. And you? You belong here.
+Every link is a doorway to something real.  
+And you? You belong here.
 
 ---
 
@@ -29,19 +32,30 @@ A reminder that tech can be tender, and community can feel like home.
 
 ---
 
-## 📝 Credits
+## 👩‍💻 Original Author
 
-> _This code was written by **Azuan** — with love, bugs, and late-night heartbreaks._  
-> _Supported by **XiezuMedia**, who believed in the chaos._  
-
-**© 2025 Zykuan & XiezuMedia. All rights reserved.**  
-Feel free to use or cherish it, like a good ex...  
-But remove this watermark? That’s like forgetting who loved you first.  
-And trust me — we notice.  
-
-Don’t ghost the author.  
-📎 [www.instagram.com/zuanxfnd](https://www.instagram.com/zuanxfnd)
+<p align="left">
+  <a href="https://github.com/swndyyy" target="_blank">
+    <img src="https://avatars.githubusercontent.com/u/73081749?v=4" width="40" style="border-radius: 50%;" />
+    <b>@swndyyy</b>
+  </a> — Original creator of the [Sharing Group](https://github.com/swndyyy/sharing-group) page that inspired this one.
+</p>
 
 ---
 
->
+## 📝 Credits & Love Notes
+
+> _This code was redesigned by **Azuan** — with love, bugs, and late-night heartbreaks._  
+> _Supported by **XiezuMedia**, who believed in the chaos._
+
+**© 2024 Zykuan & XiezuMedia. All rights reserved.**  
+Feel free to use or cherish it, like a good ex...  
+But remove this watermark? That’s like forgetting who loved you first.  
+And trust me — we notice.
+
+Don’t ghost the author.  
+📎 [instagram.com/zuanxfnd](https://www.instagram.com/zuanxfnd)
+
+---
+
+> _From Calestia, with love — always._
