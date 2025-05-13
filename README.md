@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="60" />
-</p>
 
 <h1 align="center">🌸 Calestia Community Page</h1>
 
