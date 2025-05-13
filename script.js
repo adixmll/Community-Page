@@ -208,31 +208,31 @@ document.addEventListener('DOMContentLoaded', () => {
 window.toggleGroupDetail = toggleGroupDetail;
 
 const toggleBtn = document.getElementById('darkModeToggle');
-    const body = document.body;
+const htmlElement = document.documentElement;
 
-    toggleBtn.querySelector('span').classList.add('transition-all');
-    // Cek preferensi sistem atau simpan sebelumnya
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+toggleBtn.querySelector('span').classList.add('transition-all');
 
-    if (isDarkMode) {
-      body.classList.add('dark-mode');
-      toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
-      toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
-    }
+// Cek preferensi sistem atau simpan sebelumnya
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
+if (isDarkMode) {
+  htmlElement.classList.add('dark'); // ← Aktifkan dark mode Tailwind
+  toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
+  toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
+}
 
-      const sunIcon = 'fas fa-sun text-xs text-yellow-300';
-      const moonIcon = 'fas fa-moon text-xs text-gray-700';
+toggleBtn.addEventListener('click', () => {
+  htmlElement.classList.toggle('dark'); // ← Toggle kelas dark
 
-      const isActive = body.classList.contains('dark-mode');
-      toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
-      toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
-      
-      localStorage.setItem('darkMode', isActive);
-    });
+  const sunIcon = 'fas fa-sun text-xs text-yellow-300';
+  const moonIcon = 'fas fa-moon text-xs text-gray-700';
 
+  const isActive = htmlElement.classList.contains('dark');
+  toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
+  toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
+  
+  localStorage.setItem('darkMode', isActive);
+});
 const music = document.getElementById('backgroundMusic');
 const toggleMusicBtn = document.getElementById('toggleMusicBtn');
 const musicIcon = document.getElementById('musicIcon');
