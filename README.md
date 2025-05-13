@@ -45,10 +45,10 @@ A reminder that tech can be tender, and community can feel like home.
 
 ## 📝 Credits & Love Notes
 
-> _This code was redesigned by **Azuan** — with love, bugs, and late-night heartbreaks._  
+> _This code was redesigned by **Zykuan** — with love, bugs, and late-night heartbreaks._  
 > _Supported by **XiezuMedia**, who believed in the chaos._
 
-**© 2024 Zykuan & XiezuMedia. All rights reserved.**  
+**© 2025 Zykuan & XiezuMedia. All rights reserved.**  
 Feel free to use or cherish it, like a good ex...  
 But remove this watermark? That’s like forgetting who loved you first.  
 And trust me — we notice.
