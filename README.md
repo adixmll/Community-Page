@@ -66,7 +66,7 @@ And trust me — we notice.
 ## 📎 Stay Connected
 
 <a href="https://www.instagram.com/zuanxfnd" target="_blank">
-  <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" width="20" /> instagram.com/zuanxfnd
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" width="20" /> instagram.com/zuanxfnd
 </a>
 
 ---
