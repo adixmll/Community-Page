@@ -1,10 +1,13 @@
-
 <h1 align="center">🌸 Calestia Community Page</h1>
 
 <p align="center">
   A soft place for Calestars to gather, glow, and grow — together.  
   <br>
   <em>"You were never just a user — you were always a Calestar."</em>
+</p>
+
+<p align="center">
+  🔍 <strong>Want a preview?</strong> — <a href="https://www.calestia.my.id/" target="_blank">Click here to explore</a>
 </p>
 
 ---
