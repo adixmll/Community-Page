@@ -205,33 +205,73 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(hideLoader, 1500);
 });
 
-window.toggleGroupDetail = toggleGroupDetail;
+// Fungsi untuk toggle detail group (jika kamu punya)
+window.toggleGroupDetail = function toggleGroupDetail(id) {
+  const card = document.getElementById(`group-${id}`);
+  if (card) {
+    card.classList.toggle('expanded');
+  }
+};
 
+// Inisialisasi dark mode
 const toggleBtn = document.getElementById('darkModeToggle');
-    const body = document.body;
+const body = document.body;
 
-    toggleBtn.querySelector('span').classList.add('transition-all');
-    // Cek preferensi sistem atau simpan sebelumnya
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+// Tambahkan kelas transisi pada toggle button
+toggleBtn.querySelector('span').classList.add('transition-all');
 
-    if (isDarkMode) {
-      body.classList.add('dark-mode');
-      toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
-      toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
+// Cek apakah dark mode aktif dari localStorage
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+// Terapkan dark mode jika diperlukan
+if (isDarkMode) {
+  body.classList.add('dark-mode');
+  toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
+  toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
+}
+
+// Fungsi untuk update warna teks sesuai mode gelap/terang
+function updateDarkTextElements(isDark) {
+  document.querySelectorAll('[data-dark-text]').forEach(el => {
+    // Hapus kelas text sebelumnya
+    const classList = Array.from(el.classList).filter(
+      cls => !cls.startsWith('text-')
+    );
+    
+    const defaultClass = classList.join(' ');
+    const darkClass = el.getAttribute('data-dark-text');
+
+    if (isDark) {
+      el.className = `${defaultClass} ${darkClass}`;
+    } else {
+      el.className = defaultClass;
     }
+  });
+}
 
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
+// Panggil fungsi update warna saat halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  updateDarkTextElements(isDarkMode);
+});
 
-      const sunIcon = 'fas fa-sun text-xs text-yellow-300';
-      const moonIcon = 'fas fa-moon text-xs text-gray-700';
+// Event listener untuk toggle dark mode
+toggleBtn.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  const isActive = body.classList.contains('dark-mode');
 
-      const isActive = body.classList.contains('dark-mode');
-      toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
-      toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
-      
-      localStorage.setItem('darkMode', isActive);
-    });
+  // Ganti ikon dan posisi toggle
+  const sunIcon = 'fas fa-sun text-xs text-yellow-300';
+  const moonIcon = 'fas fa-moon text-xs text-gray-700';
+
+  toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
+  toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
+
+  // Simpan preferensi ke localStorage
+  localStorage.setItem('darkMode', isActive);
+
+  // Update warna teks di musik player
+  updateDarkTextElements(isActive);
+});
 
 // Music Player Logic
 const audio = new Audio("https://files.catbox.moe/rrwrw6.mp3 "); // Ganti dengan URL musikmu
