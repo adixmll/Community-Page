@@ -11,13 +11,14 @@
  * www.instagram.com/zuanxfnd
  */
 
+// Daftar grup WhatsApp yang akan ditampilkan di UI
 const groups = [
   {
     title: 'Calestia’s Number 💖',
     header: 'Reach Your Favorite Bot',
     description: 'The easiest way to reach your favorite bot! Start chatting and let the magic begin.',
-    image: 'https://files.catbox.moe/7sgzsu.jpg ',
-    url: 'https://wa.me/6282133532380 ',
+    image: 'https://files.catbox.moe/7sgzsu.jpg  ',
+    url: 'https://wa.me/6282133532380  ',
     icon: 'fa-phone',
     color: 'bg-pink-500',
     buttonText: 'Chat With Bot',
@@ -27,8 +28,8 @@ const groups = [
     title: 'Official Group 🌟',
     header: 'Join Our Official Community',
     description: 'Join the official group where all Calestars unite. Stay connected and be part of something amazing!',
-    image: 'https://files.catbox.moe/wwfco3.png ',
-    url: 'https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH ',
+    image: 'https://files.catbox.moe/wwfco3.png  ',
+    url: 'https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH  ',
     icon: 'fa-users',
     color: 'bg-purple-500',
     buttonText: 'Join Community',
@@ -38,8 +39,8 @@ const groups = [
     title: 'Group Chat 💬',
     header: 'Chat and Bond with Calestars',
     description: 'A cozy space to chat, bond, and meet other Calestars. All are welcome to join the fun!',
-    image: 'https://files.catbox.moe/wwfco3.png ',
-    url: 'https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3 ',
+    image: 'https://files.catbox.moe/wwfco3.png  ',
+    url: 'https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3  ',
     icon: 'fa-comments',
     color: 'bg-yellow-500',
     buttonText: 'Join Group Chat',
@@ -49,8 +50,8 @@ const groups = [
     title: 'Official Channel 📢',
     header: 'Stay Updated with Us',
     description: 'Stay updated with all the latest news and announcements in our official channel. No distractions, just the essentials!',
-    image: 'https://files.catbox.moe/u4d541.jpg ',
-    url: 'https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f ',
+    image: 'https://files.catbox.moe/u4d541.jpg  ',
+    url: 'https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f  ',
     icon: 'fa-bullhorn',
     color: 'bg-blue-500',
     buttonText: 'Follow to Channel',
@@ -60,8 +61,8 @@ const groups = [
     title: 'Premium/Sewa Price List 🌸',
     header: 'Explore Our Services & Prices',
     description: 'Looking for premium or rental services? Check out the price list and discover all available options!',
-    image: 'https://files.catbox.moe/o37b3u.jpg ',
-    url: 'https://www.xiezumedia.xyz ',
+    image: 'https://files.catbox.moe/o37b3u.jpg  ',
+    url: 'https://www.xiezumedia.xyz  ',
     icon: 'fa-gem',
     color: 'bg-rose-400',
     buttonText: 'View Price List',
@@ -71,14 +72,18 @@ const groups = [
 
 let activeIndex = null;
 
+// Inisialisasi daftar grup di halaman
 function initGroups() {
   const groupsContainer = document.getElementById('groups');
   groupsContainer.innerHTML = '';
 
   groups.forEach((group, index) => {
     const card = document.createElement('div');
-    card.className = `group-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-1 hover:shadow-lg cursor-pointer ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}`;
-    
+    card.className = `
+      group-card 
+      bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-1 hover:shadow-lg cursor-pointer 
+      ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}
+    `;
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
@@ -99,7 +104,6 @@ function initGroups() {
           <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ${activeIndex === index ? 'transform rotate-180' : ''}"></i>
         </div>
       </div>
-
       <div id="detail-${index}" class="transition-all duration-300 overflow-hidden max-h-0">
         <div class="px-5 pb-5 pt-0 border-t border-gray-100">
           <p class="text-gray-600 text-sm mb-4">${group.description}</p>
@@ -121,10 +125,9 @@ function initGroups() {
   });
 }
 
+// Toggle detail grup saat diklik
 function toggleGroupDetail(index, event) {
-  if (event.target.tagName === 'A' || event.target.parentElement.tagName === 'A') {
-    return;
-  }
+  if (event.target.tagName === 'A' || event.target.parentElement.tagName === 'A') return;
 
   const detail = document.getElementById(`detail-${index}`);
   const allCards = document.querySelectorAll('.group-card');
@@ -144,7 +147,7 @@ function toggleGroupDetail(index, event) {
     detail.classList.add('max-h-0');
     allCards[index].classList.remove('ring-2', 'ring-blue-500');
     allArrows[index].classList.remove('rotate-180');
-    activeIndex = null; // Reset activeIndex jika card ditutup
+    activeIndex = null;
   } else {
     detail.classList.remove('max-h-0');
     detail.classList.add('max-h-[300px]');
@@ -158,6 +161,7 @@ function toggleGroupDetail(index, event) {
   }
 }
 
+// Loader untuk animasi loading halaman
 const pageLoader = document.getElementById('page-loader');
 
 function showLoader() {
@@ -184,7 +188,6 @@ function hideLoader() {
       document.body.style.top = '';
       document.documentElement.style.scrollBehavior = 'smooth';
       window.scrollTo({ top: scrollPosition, behavior: 'auto' });
-
       initGroups();
     }, 500);
   }
@@ -201,26 +204,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.head.appendChild(style);
 
   showLoader();
-
   setTimeout(hideLoader, 1500);
 });
 
 window.toggleGroupDetail = toggleGroupDetail;
 
 // Music Player Logic
-const audio = new Audio("https://files.catbox.moe/rrwrw6.mp3"); // Ganti dengan URL musikmu
+const audio = new Audio("https://files.catbox.moe/rrwrw6.mp3 "); // Ganti dengan URL musikmu
 const playBtn = document.getElementById('play-pause-btn');
 const playIcon = document.getElementById('play-icon');
 const pauseIcon = document.getElementById('pause-icon');
-
 const title = document.getElementById('song-title');
 const artist = document.getElementById('artist-name');
 const cover = document.getElementById('album-cover');
-
 const progressBar = document.getElementById('progress-bar');
 const progressPointer = document.getElementById('progress-pointer');
 const progressContainer = document.getElementById('progress-container'); // Pastikan ID ini ada di HTML
-
 const currentTimeEl = document.getElementById('current-time');
 const totalDurationEl = document.getElementById('total-duration');
 
@@ -374,11 +373,12 @@ if (toggleBtn) {
       // Ganti ikon dan posisi toggle
       const sunIcon = 'fas fa-sun text-xs text-yellow-300';
       const moonIcon = 'fas fa-moon text-xs text-gray-700';
-
       const toggleIcon = toggleBtn.querySelector('i');
+
       if (toggleIcon) {
         toggleIcon.className = isActive ? sunIcon : moonIcon;
       }
+
       toggleSpan.style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
 
       // Simpan preferensi ke localStorage
@@ -397,14 +397,13 @@ function updateDarkTextElements(isDark) {
     const classList = Array.from(el.classList).filter(
       cls => !cls.startsWith('text-')
     );
+    const defaultClass = classList.join(' ');
+    const darkClass = el.getAttribute('data-dark-text');
 
-    const defaultClass = classList.join(' ');  
-    const darkClass = el.getAttribute('data-dark-text');  
-
-    if (isDark) {  
-      el.className = `${defaultClass} ${darkClass}`;  
-    } else {  
-      el.className = defaultClass;  
+    if (isDark) {
+      el.className = `${defaultClass} ${darkClass}`;
+    } else {
+      el.className = defaultClass;
     }
   });
 }
@@ -412,7 +411,7 @@ function updateDarkTextElements(isDark) {
 // Panggil fungsi update warna saat halaman dimuat
 document.addEventListener('DOMContentLoaded', () => {
   updateDarkTextElements(localStorage.getItem('darkMode') === 'true');
-  
+
   // Init groups after DOM is fully loaded
   setTimeout(() => {
     initGroups();
