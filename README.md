@@ -14,6 +14,15 @@
   🔍 <strong>Want a preview?</strong> — <a href="https://www.calestia.my.id/" target="_blank">Click here to explore</a>
 </p>
 
+<p align="center">
+  📝 <strong>Changelog (15th May 2025)</strong>:
+  <ul>
+    <li>✨ <b>Light & Dark Mode Toggle</b> – Switch between Light and Dark modes for a personalized experience.</li>
+    <li>🎶 <b>Music Player</b> – Listen to your favorite tracks directly from the page.</li>
+    <li>💸 <b>Plan Pricing</b> – Discover different pricing tiers to fit your needs.</li>
+  </ul>
+</p>
+
 ---
 
 ## 💖 What's Inside?
@@ -25,6 +34,9 @@ A constellation of curated links for you:
 - 💬 <b>Group Chat</b> – For casual talks, deep midnight thoughts, and soft laughter  
 - 📢 <b>Official Channel</b> – For heartfelt updates and loving reminders  
 - 🌸 <b>Premium & Rent Web</b> – Check our sweet offerings and support the journey  
+- 🌙 <b>Light & Dark Mode Toggle</b> – Switch between Light and Dark modes for a personalized experience  
+- 🎶 <b>Music Player</b> – Listen to your favorite tracks right from the page  
+- 💸 <b>Plan Pricing</b> – Discover different pricing tiers for your needs  
 
 > Every link is a doorway to something real.  
 > And you? You belong here.
