@@ -232,3 +232,73 @@ const toggleBtn = document.getElementById('darkModeToggle');
       
       localStorage.setItem('darkMode', isActive);
     });
+
+// Music Player Logic
+const audio = new Audio("https://files.catbox.moe/rrwrw6.mp3 "); // Ganti dengan URL musikmu
+const playBtn = document.getElementById('play-pause-btn');
+const playIcon = document.getElementById('play-icon');
+const pauseIcon = document.getElementById('pause-icon');
+
+const title = document.getElementById('song-title');
+const artist = document.getElementById('artist-name');
+const cover = document.getElementById('album-cover');
+
+const progressBar = document.getElementById('progress-bar');
+const progressPointer = document.getElementById('progress-pointer');
+const currentTimeEl = document.getElementById('current-time');
+const totalDurationEl = document.getElementById('total-duration');
+
+let isPlaying = false;
+
+// Format durasi ke MM:SS
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+}
+
+// Update UI saat durasi tersedia
+audio.addEventListener('loadedmetadata', () => {
+  totalDurationEl.textContent = formatTime(audio.duration);
+});
+
+// Update progress bar
+function updateProgress() {
+  if (!isNaN(audio.duration)) {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+    progressPointer.style.left = `${progressPercent}%`;
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+  }
+}
+
+// Toggle play/pause
+playBtn.addEventListener('click', () => {
+  if (!isPlaying) {
+    audio.play();
+    playIcon.classList.add('hidden');
+    pauseIcon.classList.remove('hidden');
+    isPlaying = true;
+  } else {
+    audio.pause();
+    pauseIcon.classList.add('hidden');
+    playIcon.classList.remove('hidden');
+    isPlaying = false;
+  }
+});
+
+// Update progress setiap detik
+setInterval(updateProgress, 1000);
+
+// Drag pointer untuk seek
+progressPointer.addEventListener('mousedown', (e) => {
+  const offsetX = e.clientX - progressPointer.parentNode.getBoundingClientRect().left;
+  const percent = offsetX / progressPointer.parentNode.offsetWidth;
+  audio.currentTime = percent * audio.duration;
+  updateProgress();
+});
+
+// Stop musik jika tab ditutup
+window.addEventListener('beforeunload', () => {
+  audio.pause();
+});
