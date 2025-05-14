@@ -121,42 +121,51 @@ function initGroups() {
   });
 }
 
+// Fix for the toggleGroupDetail function
 function toggleGroupDetail(index, event) {
-  if (event.target.tagName === 'A' || event.target.parentElement.tagName === 'A') {
-    return;
+  // Prevent default behavior if coming from link click
+  if (event && (event.target.tagName === 'A' || event.target.closest('a'))) {
+    return; // Don't toggle if clicking on a link
   }
 
   const detail = document.getElementById(`detail-${index}`);
   const allCards = document.querySelectorAll('.group-card');
   const allArrows = document.querySelectorAll('.fa-chevron-down');
-
-  document.querySelectorAll('[id^="detail-"]').forEach((el, i) => {
-    if (i !== index && el.classList.contains('max-h-[300px]')) {
-      el.classList.remove('max-h-[300px]');
-      el.classList.add('max-h-0');
-      allCards[i].classList.remove('ring-2', 'ring-blue-500');
-      allArrows[i].classList.remove('rotate-180');
-    }
-  });
-
+  
+  // If this detail is already open, close it
   if (detail.classList.contains('max-h-[300px]')) {
     detail.classList.remove('max-h-[300px]');
     detail.classList.add('max-h-0');
     allCards[index].classList.remove('ring-2', 'ring-blue-500');
-    allArrows[index].classList.remove('rotate-180');
-    activeIndex = null; // Reset activeIndex jika card ditutup
+    allArrows[index].classList.remove('transform', 'rotate-180');
+    activeIndex = null;
   } else {
+    // Close any open details first
+    document.querySelectorAll('[id^="detail-"]').forEach((el, i) => {
+      if (i !== index) {
+        el.classList.remove('max-h-[300px]');
+        el.classList.add('max-h-0');
+        allCards[i].classList.remove('ring-2', 'ring-blue-500');
+        allArrows[i].classList.remove('transform', 'rotate-180');
+      }
+    });
+    
+    // Then open this detail
     detail.classList.remove('max-h-0');
     detail.classList.add('max-h-[300px]');
     allCards[index].classList.add('ring-2', 'ring-blue-500');
-    allArrows[index].classList.add('rotate-180');
+    allArrows[index].classList.add('transform', 'rotate-180');
     activeIndex = index;
-
+    
+    // Scroll to show the expanded content
     setTimeout(() => {
       detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 100);
+    }, 300);
   }
 }
+
+// Ensure the function is accessible in the window object
+window.toggleGroupDetail = toggleGroupDetail;
 
 const pageLoader = document.getElementById('page-loader');
 
