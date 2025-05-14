@@ -68,6 +68,15 @@
       border-left-color: #7d6dff;
     }
 
+    /* Music Player Custom */
+#progress-pointer {
+  transition: left 0.1s ease;
+}
+
+.dark-mode #progress-pointer {
+  background-color: #9b7dd4;
+}
+    
     /* Gradient Text */
     .gradient-text {
       background: linear-gradient(90deg, var(--primary), var(--accent));
@@ -250,6 +259,55 @@
       </div>
     </div>
 
+    <!-- Music Player -->
+<section class="mt-12">
+  <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+    <i class="fas fa-music mr-3 text-purple-500"></i>
+    <span>Now Playing</span>
+  </h2>
+
+  <div id="music-player"
+       class="bg-white p-4 rounded-xl shadow-md border border-gray-100 dark-mode:bg-[#2a2a40] transition-colors duration-300">
+
+    <div class="flex items-center space-x-4">
+      <!-- Album Cover -->
+      <img id="album-cover"
+           src="https://files.catbox.moe/8olprf.jpg "
+           alt="Cover"
+           class="w-16 h-16 rounded-lg object-cover shadow-sm">
+
+      <!-- Info Musik -->
+      <div class="flex-1 min-w-0">
+        <p id="song-title" class="font-semibold text-gray-800 dark:text-white truncate">About You</p>
+        <p id="artist-name" class="text-sm text-gray-600 dark:text-gray-300 truncate">The 1975</p>
+      </div>
+
+      <!-- Tombol Play/Pause -->
+      <button id="play-pause-btn"
+              class="text-gray-700 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400 focus:outline-none">
+        <i class="fas fa-play" id="play-icon"></i>
+        <i class="fas fa-pause hidden" id="pause-icon"></i>
+      </button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="mt-3 relative group">
+      <div class="h-1 bg-gray-200 rounded-full overflow-hidden dark:bg-gray-700">
+        <div id="progress-bar" class="h-full w-0 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-100"></div>
+      </div>
+      <div id="progress-pointer"
+           class="absolute top-0 -mt-1 w-2 h-2 bg-purple-500 rounded-full transform translate-x-0 cursor-pointer z-10 hidden group-hover:block"
+           style="left: 0;"></div>
+    </div>
+
+    <!-- Duration -->
+    <div class="flex justify-between mt-1 text-xs text-gray-500 dark:text-gray-400">
+      <span id="current-time">0:00</span>
+      <span id="total-duration">0:00</span>
+    </div>
+  </div>
+</section>
+    
     <!-- Groups Section -->
     <section class="mt-12">
       <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
