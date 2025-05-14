@@ -14,78 +14,73 @@
 // Daftar grup WhatsApp yang akan ditampilkan di UI
 const groups = [
   {
-    title: 'Calestia’s Number 💖',
-    header: 'Reach Your Favorite Bot',
-    description: 'The easiest way to reach your favorite bot! Start chatting and let the magic begin.',
-    image: 'https://files.catbox.moe/7sgzsu.jpg  ',
-    url: 'https://wa.me/6282133532380  ',
-    icon: 'fa-phone',
-    color: 'bg-pink-500',
-    buttonText: 'Chat With Bot',
-    buttonIcon: 'fa-comment-dots'
+    title: "Calestia’s Number 💖",
+    header: "Reach Your Favorite Bot",
+    description:
+      "The easiest way to reach your favorite bot! Start chatting and let the magic begin.",
+    image: "https://files.catbox.moe/7sgzsu.jpg   ",
+    url: "https://wa.me/6282133532380   ",
+    icon: "fa-phone",
+    color: "bg-pink-500",
+    buttonText: "Chat With Bot",
+    buttonIcon: "fa-comment-dots"
   },
   {
-    title: 'Official Group 🌟',
-    header: 'Join Our Official Community',
-    description: 'Join the official group where all Calestars unite. Stay connected and be part of something amazing!',
-    image: 'https://files.catbox.moe/wwfco3.png  ',
-    url: 'https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH  ',
-    icon: 'fa-users',
-    color: 'bg-purple-500',
-    buttonText: 'Join Community',
-    buttonIcon: 'fa-user-friends'
+    title: "Official Group 🌟",
+    header: "Join Our Official Community",
+    description:
+      "Join the official group where all Calestars unite. Stay connected and be part of something amazing!",
+    image: "https://files.catbox.moe/wwfco3.png   ",
+    url: "https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH   ",
+    icon: "fa-users",
+    color: "bg-purple-500",
+    buttonText: "Join Community",
+    buttonIcon: "fa-user-friends"
   },
   {
-    title: 'Group Chat 💬',
-    header: 'Chat and Bond with Calestars',
-    description: 'A cozy space to chat, bond, and meet other Calestars. All are welcome to join the fun!',
-    image: 'https://files.catbox.moe/wwfco3.png  ',
-    url: 'https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3  ',
-    icon: 'fa-comments',
-    color: 'bg-yellow-500',
-    buttonText: 'Join Group Chat',
-    buttonIcon: 'fa-comments'
+    title: "Group Chat 💬",
+    header: "Chat and Bond with Calestars",
+    description:
+      "A cozy space to chat, bond, and meet other Calestars. All are welcome to join the fun!",
+    image: "https://files.catbox.moe/wwfco3.png   ",
+    url: "https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3   ",
+    icon: "fa-comments",
+    color: "bg-yellow-500",
+    buttonText: "Join Group Chat",
+    buttonIcon: "fa-comments"
   },
   {
-    title: 'Official Channel 📢',
-    header: 'Stay Updated with Us',
-    description: 'Stay updated with all the latest news and announcements in our official channel. No distractions, just the essentials!',
-    image: 'https://files.catbox.moe/u4d541.jpg  ',
-    url: 'https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f  ',
-    icon: 'fa-bullhorn',
-    color: 'bg-blue-500',
-    buttonText: 'Follow to Channel',
-    buttonIcon: 'fa-bullhorn'
-  },
-  {
-    title: 'Premium/Sewa Price List 🌸',
-    header: 'Explore Our Services & Prices',
-    description: 'Looking for premium or rental services? Check out the price list and discover all available options!',
-    image: 'https://files.catbox.moe/o37b3u.jpg  ',
-    url: 'https://www.xiezumedia.xyz  ',
-    icon: 'fa-gem',
-    color: 'bg-rose-400',
-    buttonText: 'View Price List',
-    buttonIcon: 'fa-list'
+    title: "Official Channel 📢",
+    header: "Stay Updated with Us",
+    description:
+      "Stay updated with all the latest news and announcements in our official channel. No distractions, just the essentials!",
+    image: "https://files.catbox.moe/u4d541.jpg   ",
+    url: "https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f   ",
+    icon: "fa-bullhorn",
+    color: "bg-blue-500",
+    buttonText: "Follow to Channel",
+    buttonIcon: "fa-bullhorn"
   }
 ];
 
 let activeIndex = null;
 
-// Inisialisasi daftar grup di halaman
+/**
+ * Inisialisasi daftar grup di halaman
+ */
 function initGroups() {
-  const groupsContainer = document.getElementById('groups');
-  groupsContainer.innerHTML = '';
+  const groupsContainer = document.getElementById("groups");
+  groupsContainer.innerHTML = "";
 
   groups.forEach((group, index) => {
-    const card = document.createElement('div');
+    const card = document.createElement("div");
     card.className = `
       group-card 
       bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-1 hover:shadow-lg cursor-pointer 
-      ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}
+      ${activeIndex === index ? "ring-2 ring-blue-500" : ""}
     `;
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
+    card.style.opacity = "0";
+    card.style.transform = "translateY(20px)";
     card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
 
     card.innerHTML = `
@@ -101,14 +96,18 @@ function initGroups() {
             <h3 class="font-bold text-gray-800">${group.title}</h3>
             <p class="text-sm text-gray-500 mt-1">${group.header.substring(0, 60)}...</p>
           </div>
-          <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ${activeIndex === index ? 'transform rotate-180' : ''}"></i>
+          <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ${
+            activeIndex === index ? "transform rotate-180" : ""
+          }"></i>
         </div>
       </div>
       <div id="detail-${index}" class="transition-all duration-300 overflow-hidden max-h-0">
         <div class="px-5 pb-5 pt-0 border-t border-gray-100">
           <p class="text-gray-600 text-sm mb-4">${group.description}</p>
           <a href="${group.url}" target="_blank" 
-             class="inline-flex items-center justify-center w-full ${group.color.replace('500', '500')} hover:${group.color.replace('500', '600')} text-white py-2 px-4 rounded-lg shadow-sm transition-all">
+             class="inline-flex items-center justify-center w-full ${
+               group.color.replace("500", "500")
+             } hover:${group.color.replace("500", "600")} text-white py-2 px-4 rounded-lg shadow-sm transition-all">
             <i class="fas ${group.buttonIcon} mr-2"></i> <!-- Dinamis -->
             ${group.buttonText}
           </a>
@@ -119,82 +118,90 @@ function initGroups() {
     groupsContainer.appendChild(card);
 
     setTimeout(() => {
-      card.style.opacity = '1';
-      card.style.transform = 'translateY(0)';
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
     }, index * 100);
   });
 }
 
-// Toggle detail grup saat diklik
+/**
+ * Toggle detail grup saat diklik
+ */
 function toggleGroupDetail(index, event) {
-  if (event.target.tagName === 'A' || event.target.parentElement.tagName === 'A') return;
+  if (
+    event.target.tagName === "A" ||
+    event.target.parentElement.tagName === "A"
+  )
+    return;
 
   const detail = document.getElementById(`detail-${index}`);
-  const allCards = document.querySelectorAll('.group-card');
-  const allArrows = document.querySelectorAll('.fa-chevron-down');
+  const allCards = document.querySelectorAll(".group-card");
+  const allArrows = document.querySelectorAll(".fa-chevron-down");
 
   document.querySelectorAll('[id^="detail-"]').forEach((el, i) => {
-    if (i !== index && el.classList.contains('max-h-[300px]')) {
-      el.classList.remove('max-h-[300px]');
-      el.classList.add('max-h-0');
-      allCards[i].classList.remove('ring-2', 'ring-blue-500');
-      allArrows[i].classList.remove('rotate-180');
+    if (i !== index && el.classList.contains("max-h-[300px]")) {
+      el.classList.remove("max-h-[300px]");
+      el.classList.add("max-h-0");
+      allCards[i].classList.remove("ring-2", "ring-blue-500");
+      allArrows[i].classList.remove("rotate-180");
     }
   });
 
-  if (detail.classList.contains('max-h-[300px]')) {
-    detail.classList.remove('max-h-[300px]');
-    detail.classList.add('max-h-0');
-    allCards[index].classList.remove('ring-2', 'ring-blue-500');
-    allArrows[index].classList.remove('rotate-180');
+  if (detail.classList.contains("max-h-[300px]")) {
+    detail.classList.remove("max-h-[300px]");
+    detail.classList.add("max-h-0");
+    allCards[index].classList.remove("ring-2", "ring-blue-500");
+    allArrows[index].classList.remove("rotate-180");
     activeIndex = null;
   } else {
-    detail.classList.remove('max-h-0');
-    detail.classList.add('max-h-[300px]');
-    allCards[index].classList.add('ring-2', 'ring-blue-500');
-    allArrows[index].classList.add('rotate-180');
+    detail.classList.remove("max-h-0");
+    detail.classList.add("max-h-[300px]");
+    allCards[index].classList.add("ring-2", "ring-blue-500");
+    allArrows[index].classList.add("rotate-180");
     activeIndex = index;
 
     setTimeout(() => {
-      detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }, 100);
   }
 }
 
-// Loader untuk animasi loading halaman
-const pageLoader = document.getElementById('page-loader');
+/**
+ * Loader untuk animasi loading halaman
+ */
+const pageLoader = document.getElementById("page-loader");
 
 function showLoader() {
-  document.documentElement.style.scrollBehavior = 'auto';
+  document.documentElement.style.scrollBehavior = "auto";
   const scrollPosition = window.scrollY;
   document.body.style.top = `-${scrollPosition}px`;
-  document.body.classList.add('fixed', 'w-full');
+  document.body.classList.add("fixed", "w-full");
 
   if (pageLoader) {
-    pageLoader.style.display = 'flex';
+    pageLoader.style.display = "flex";
     setTimeout(() => {
-      pageLoader.style.opacity = '1';
+      pageLoader.style.opacity = "1";
     }, 10);
   }
 }
 
 function hideLoader() {
   if (pageLoader) {
-    pageLoader.style.opacity = '0';
+    pageLoader.style.opacity = "0";
     setTimeout(() => {
-      pageLoader.style.display = 'none';
-      document.body.classList.remove('fixed', 'w-full');
-      const scrollPosition = parseInt(document.body.style.top || '0') * -1;
-      document.body.style.top = '';
-      document.documentElement.style.scrollBehavior = 'smooth';
-      window.scrollTo({ top: scrollPosition, behavior: 'auto' });
+      pageLoader.style.display = "none";
+      document.body.classList.remove("fixed", "w-full");
+      const scrollPosition = parseInt(document.body.style.top || "0") * -1;
+      document.body.style.top = "";
+      document.documentElement.style.scrollBehavior = "smooth";
+      window.scrollTo({ top: scrollPosition, behavior: "auto" });
       initGroups();
     }, 500);
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const style = document.createElement('style');
+document.addEventListener("DOMContentLoaded", () => {
+  const style = document.createElement("style");
   style.textContent = `
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -202,43 +209,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   `;
   document.head.appendChild(style);
-
   showLoader();
   setTimeout(hideLoader, 1500);
 });
 
 window.toggleGroupDetail = toggleGroupDetail;
 
-// Music Player Logic
+/**
+ * Music Player Logic
+ */
 const audio = new Audio("https://files.catbox.moe/rrwrw6.mp3 "); // Ganti dengan URL musikmu
-const playBtn = document.getElementById('play-pause-btn');
-const playIcon = document.getElementById('play-icon');
-const pauseIcon = document.getElementById('pause-icon');
-const title = document.getElementById('song-title');
-const artist = document.getElementById('artist-name');
-const cover = document.getElementById('album-cover');
-const progressBar = document.getElementById('progress-bar');
-const progressPointer = document.getElementById('progress-pointer');
-const progressContainer = document.getElementById('progress-container'); // Pastikan ID ini ada di HTML
-const currentTimeEl = document.getElementById('current-time');
-const totalDurationEl = document.getElementById('total-duration');
+const playBtn = document.getElementById("play-pause-btn");
+const playIcon = document.getElementById("play-icon");
+const pauseIcon = document.getElementById("pause-icon");
+const title = document.getElementById("song-title");
+const artist = document.getElementById("artist-name");
+const cover = document.getElementById("album-cover");
+const progressBar = document.getElementById("progress-bar");
+const progressPointer = document.getElementById("progress-pointer");
+const progressContainer = document.getElementById("progress-container");
+const currentTimeEl = document.getElementById("current-time");
+const totalDurationEl = document.getElementById("total-duration");
 
 let isPlaying = false;
 let isDragging = false;
 
-// Format durasi ke MM:SS
+/**
+ * Format durasi ke MM:SS
+ */
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
 }
 
-// Update UI saat durasi tersedia
-audio.addEventListener('loadedmetadata', () => {
+audio.addEventListener("loadedmetadata", () => {
   totalDurationEl.textContent = formatTime(audio.duration);
 });
 
-// Update progress bar & pointer
+/**
+ * Update progress bar & pointer
+ */
 function updateProgress() {
   if (!isNaN(audio.duration)) {
     const progressPercent = (audio.currentTime / audio.duration) * 100;
@@ -248,172 +259,209 @@ function updateProgress() {
   }
 }
 
-// Toggle play/pause
-playBtn.addEventListener('click', () => {
+/**
+ * Toggle play/pause
+ */
+playBtn.addEventListener("click", () => {
   if (!isPlaying) {
     audio.play();
-    playIcon.classList.add('hidden');
-    pauseIcon.classList.remove('hidden');
+    playIcon.classList.add("hidden");
+    pauseIcon.classList.remove("hidden");
     isPlaying = true;
   } else {
     audio.pause();
-    pauseIcon.classList.add('hidden');
-    playIcon.classList.remove('hidden');
+    pauseIcon.classList.add("hidden");
+    playIcon.classList.remove("hidden");
     isPlaying = false;
   }
 });
 
-// Update progress setiap detik
 setInterval(updateProgress, 1000);
 
-// Drag pointer untuk seek
-progressPointer.addEventListener('mousedown', (e) => {
+/**
+ * Drag pointer untuk seek
+ */
+progressPointer.addEventListener("mousedown", (e) => {
   e.preventDefault(); // Hindari drag seleksi
   isDragging = true;
 });
 
-// Saat mouse bergerak (drag)
-document.addEventListener('mousemove', (e) => {
-  if (isDragging) {
-    seek(e);
-  }
+document.addEventListener("mousemove", (e) => {
+  if (isDragging) seek(e);
 });
 
-// Saat melepas klik (mouseup)
-document.addEventListener('mouseup', () => {
+document.addEventListener("mouseup", () => {
   if (isDragging) {
     isDragging = false;
-    seek({ clientX: progressPointer.getBoundingClientRect().left + 5 }); // Update posisi akhir
+    seek({
+      clientX: progressPointer.getBoundingClientRect().left + 5
+    }); // Update posisi akhir
   }
 });
 
-// Untuk touch device (ponsel/tablet)
-progressContainer.addEventListener('touchstart', (e) => {
+progressContainer.addEventListener("touchstart", (e) => {
   isDragging = true;
   seek(e.touches[0]);
 });
 
-progressContainer.addEventListener('touchmove', (e) => {
-  if (isDragging) {
-    seek(e.touches[0]);
-  }
+progressContainer.addEventListener("touchmove", (e) => {
+  if (isDragging) seek(e.touches[0]);
 });
 
-progressContainer.addEventListener('touchend', () => {
+progressContainer.addEventListener("touchend", () => {
   if (isDragging) {
     isDragging = false;
-    seek({ clientX: progressPointer.getBoundingClientRect().left + 5 });
+    seek({
+      clientX: progressPointer.getBoundingClientRect().left + 5
+    });
   }
 });
 
-// Fungsi utama untuk mencari posisi lagu
+/**
+ * Fungsi utama untuk mencari posisi lagu
+ */
 function seek(event) {
   const rect = progressContainer.getBoundingClientRect();
   let offsetX = event.clientX - rect.left;
 
-  // Batas kiri dan kanan
   if (offsetX < 0) offsetX = 0;
   if (offsetX > rect.width) offsetX = rect.width;
 
   const percent = offsetX / rect.width;
   const newTime = percent * audio.duration;
 
-  // Update UI sambil dragging
   if (isDragging) {
     progressBar.style.width = `${percent * 100}%`;
     progressPointer.style.left = `${percent * 100}%`;
     currentTimeEl.textContent = formatTime(newTime);
   } else {
-    // Set waktu lagu jika bukan drag
     audio.currentTime = newTime;
     updateProgress();
   }
 }
 
-// Klik langsung di progress bar untuk geser durasi
-progressContainer.addEventListener('click', (e) => {
-  if (!isDragging) {
-    seek(e);
-  }
+progressContainer.addEventListener("click", (e) => {
+  if (!isDragging) seek(e);
 });
 
-// Stop musik jika tab ditutup
-window.addEventListener('beforeunload', () => {
+window.addEventListener("beforeunload", () => {
   audio.pause();
 });
 
-// Inisialisasi dark mode
-const toggleBtn = document.getElementById('darkModeToggle');
+/**
+ * Inisialisasi dark mode
+ */
+const toggleBtn = document.getElementById("darkModeToggle");
+
 if (toggleBtn) {
   const body = document.body;
+  const toggleSpan = toggleBtn.querySelector("span");
 
-  // Tambahkan kelas transisi pada toggle button
-  const toggleSpan = toggleBtn.querySelector('span');
   if (toggleSpan) {
-    toggleSpan.classList.add('transition-all');
+    toggleSpan.classList.add("transition-all");
 
-    // Cek apakah dark mode aktif dari localStorage
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    const isDarkMode = localStorage.getItem("darkMode") === "true";
 
-    // Terapkan dark mode jika diperlukan
     if (isDarkMode) {
-      body.classList.add('dark-mode');
-      toggleSpan.style.transform = 'translateX(22px)';
-      const toggleIcon = toggleBtn.querySelector('i');
+      body.classList.add("dark-mode");
+      toggleSpan.style.transform = "translateX(22px)";
+      const toggleIcon = toggleBtn.querySelector("i");
       if (toggleIcon) {
-        toggleIcon.className = 'fas fa-sun text-xs text-yellow-300';
+        toggleIcon.className = "fas fa-sun text-xs text-yellow-300";
       }
     }
 
-    // Event listener untuk toggle dark mode
-    toggleBtn.addEventListener('click', () => {
-      body.classList.toggle('dark-mode');
-      const isActive = body.classList.contains('dark-mode');
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+      const isActive = body.classList.contains("dark-mode");
 
-      // Ganti ikon dan posisi toggle
-      const sunIcon = 'fas fa-sun text-xs text-yellow-300';
-      const moonIcon = 'fas fa-moon text-xs text-gray-700';
-      const toggleIcon = toggleBtn.querySelector('i');
+      const sunIcon = "fas fa-sun text-xs text-yellow-300";
+      const moonIcon = "fas fa-moon text-xs text-gray-700";
+      const toggleIcon = toggleBtn.querySelector("i");
 
       if (toggleIcon) {
         toggleIcon.className = isActive ? sunIcon : moonIcon;
       }
 
-      toggleSpan.style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
+      toggleSpan.style.transform = isActive
+        ? "translateX(22px)"
+        : "translateX(0.5px)";
 
-      // Simpan preferensi ke localStorage
-      localStorage.setItem('darkMode', isActive);
-
-      // Update warna teks di musik player
+      localStorage.setItem("darkMode", isActive);
       updateDarkTextElements(isActive);
     });
   }
 }
 
-// Fungsi untuk update warna teks sesuai mode gelap/terang
+/**
+ * Update warna teks sesuai mode gelap/terang
+ */
 function updateDarkTextElements(isDark) {
-  document.querySelectorAll('[data-dark-text]').forEach(el => {
-    // Hapus kelas text sebelumnya
-    const classList = Array.from(el.classList).filter(
-      cls => !cls.startsWith('text-')
-    );
-    const defaultClass = classList.join(' ');
-    const darkClass = el.getAttribute('data-dark-text');
-
-    if (isDark) {
-      el.className = `${defaultClass} ${darkClass}`;
-    } else {
-      el.className = defaultClass;
-    }
+  document.querySelectorAll("[data-dark-text]").forEach((el) => {
+    const defaultClasses = Array.from(el.classList)
+      .filter((c) => !c.startsWith("text-"))
+      .join(" ");
+    const darkClass = el.getAttribute("data-dark-text");
+    el.className = isDark
+      ? `${defaultClasses} ${darkClass}`
+      : defaultClasses;
   });
 }
 
-// Panggil fungsi update warna saat halaman dimuat
-document.addEventListener('DOMContentLoaded', () => {
-  updateDarkTextElements(localStorage.getItem('darkMode') === 'true');
-
-  // Init groups after DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  updateDarkTextElements(localStorage.getItem("darkMode") === "true");
   setTimeout(() => {
     initGroups();
   }, 100);
+});
+
+/**
+ * Inisialisasi plan selector
+ */
+function initPlans() {
+  document.querySelectorAll(".select-plan").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const card = event.target.closest(".card-hover");
+      const planName = card.querySelector("h3:nth-of-type(1)").innerText.trim();
+      const priceDurationElement = card.querySelector("h3:nth-of-type(2)");
+      const priceText = priceDurationElement
+        .querySelector("span")
+        .previousSibling.textContent.trim();
+      const duration =
+        priceDurationElement
+          .querySelector("span")
+          .innerText.trim()
+          .replace(/\D+/g, "") + " days";
+      let price = parseInt(priceText.replace("K", "000"));
+      const priceFormatted = price.toLocaleString("id-ID");
+
+      let message = `Hi Admin! I'd like to place an order
+*Plan:* ${planName}  
+*Price:* Rp${priceFormatted}  
+*Duration:* ${duration}  
+*Payment method:* Please choose one — Dana, Shopeepay, or QRIS`;
+
+      if (planName === "Inviting bots to groups") {
+        message += `\n*Link Group:* isi url group, pastikan tidak diprivat`;
+      }
+
+      const whatsappUrl = `https://wa.me/628979440862?text= ${encodeURIComponent(
+        message
+      )}`;
+      window.open(whatsappUrl, "_blank");
+    });
+  });
+
+  const cards = document.querySelectorAll(".card-hover");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      entry.target.classList.toggle("active", entry.isIntersecting);
+    });
+  }, { threshold: 0.5 });
+
+  cards.forEach((card) => observer.observe(card));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  initPlans();
 });
