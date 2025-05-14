@@ -107,13 +107,13 @@ function initGroups() {
       </div>
     `;
 
-    groupsContainer.appendChild(card);
-
-    // Tambahkan event listener untuk klik pada seluruh card
+    // Tambahkan event listener untuk card
     card.addEventListener('click', function(event) {
       if (event.target.tagName === 'A' || event.target.closest('a')) return;
       toggleGroupDetail(index, event);
     });
+
+    groupsContainer.appendChild(card);
 
     setTimeout(() => {
       card.style.opacity = '1';
