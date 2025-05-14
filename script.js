@@ -208,162 +208,27 @@ document.addEventListener('DOMContentLoaded', () => {
 window.toggleGroupDetail = toggleGroupDetail;
 
 const toggleBtn = document.getElementById('darkModeToggle');
-const htmlElement = document.documentElement;
+    const body = document.body;
 
-toggleBtn.querySelector('span').classList.add('transition-all');
+    toggleBtn.querySelector('span').classList.add('transition-all');
+    // Cek preferensi sistem atau simpan sebelumnya
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-// Cek preferensi sistem atau simpan sebelumnya
-const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    if (isDarkMode) {
+      body.classList.add('dark-mode');
+      toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
+      toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
+    }
 
-if (isDarkMode) {
-  htmlElement.classList.add('dark'); // ← Aktifkan dark mode Tailwind
-  toggleBtn.querySelector('span').style.transform = 'translateX(22px)';
-  toggleBtn.querySelector('i').className = 'fas fa-sun text-xs text-yellow-300';
-}
+    toggleBtn.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
 
-toggleBtn.addEventListener('click', () => {
-  htmlElement.classList.toggle('dark'); // ← Toggle kelas dark
+      const sunIcon = 'fas fa-sun text-xs text-yellow-300';
+      const moonIcon = 'fas fa-moon text-xs text-gray-700';
 
-  const sunIcon = 'fas fa-sun text-xs text-yellow-300';
-  const moonIcon = 'fas fa-moon text-xs text-gray-700';
-
-  const isActive = htmlElement.classList.contains('dark');
-  toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
-  toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
-  
-  localStorage.setItem('darkMode', isActive);
-});
-const music = document.getElementById('backgroundMusic');
-const toggleMusicBtn = document.getElementById('toggleMusicBtn');
-const musicIcon = document.getElementById('musicIcon');
-const musicStatus = document.getElementById('musicStatus');
-const currentTimeEl = document.getElementById('currentTime');
-const durationEl = document.getElementById('duration');
-
-// Progress Bar Elements
-const progressBarFill = document.getElementById('progressBarFill');
-const progressBarIndicator = document.getElementById('progressBarIndicator');
-const progressBarContainer = document.getElementById('progressBarContainer');
-
-let hasInteracted = false;
-let isSeeking = false;
-
-// Format waktu MM:SS
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-// Update progress bar
-function updateProgressBar(time) {
-  if (isNaN(music.duration)) return;
-  const percent = (time / music.duration) * 100;
-  progressBarFill.style.width = `${percent}%`;
-  progressBarIndicator.style.left = `${percent}%`;
-}
-
-// Event metadata loaded
-music.addEventListener('loadedmetadata', () => {
-  if (!isNaN(music.duration)) {
-    durationEl.textContent = formatTime(music.duration);
-    updateProgressBar(0);
-  }
-});
-
-// Update waktu saat musik jalan
-music.addEventListener('timeupdate', () => {
-  if (!isSeeking && !isNaN(music.duration)) {
-    currentTimeEl.textContent = formatTime(music.currentTime);
-    updateProgressBar(music.currentTime);
-  }
-});
-
-// Handle klik di progress bar
-progressBarContainer.addEventListener('click', (e) => {
-  const rect = progressBarContainer.getBoundingClientRect();
-  const offsetX = e.clientX - rect.left;
-  const percent = offsetX / rect.width;
-  const newTime = percent * music.duration;
-
-  if (!isNaN(newTime)) {
-    music.currentTime = newTime;
-    updateProgressBar(newTime);
-  }
-});
-
-// Preview saat hover
-progressBarContainer.addEventListener('mousemove', (e) => {
-  const rect = progressBarContainer.getBoundingClientRect();
-  const offsetX = e.clientX - rect.left;
-  const percent = Math.min(1, Math.max(0, offsetX / rect.width));
-  progressBarIndicator.style.left = `${percent * 100}%`;
-  progressBarIndicator.classList.remove('hidden');
-});
-progressBarContainer.addEventListener('mouseleave', () => {
-  progressBarIndicator.classList.add('hidden');
-});
-
-// Toggle Play/Pause
-function toggleMusic() {
-  if (music.paused) {
-    music.play();
-    musicIcon.classList.replace('fa-play', 'fa-pause');
-    toggleMusicBtn.querySelector('span').textContent = "Pause";
-    toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
-    toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
-    musicStatus.textContent = "Music Playing";
-  } else {
-    music.pause();
-    musicIcon.classList.replace('fa-pause', 'fa-play');
-    toggleMusicBtn.querySelector('span').textContent = "Play";
-    toggleMusicBtn.classList.replace('bg-red-500', 'bg-blue-500');
-    toggleMusicBtn.classList.replace('hover:bg-red-600', 'hover:bg-blue-600');
-    musicStatus.textContent = "Music Paused";
-  }
-}
-
-// Interaksi pertama kali
-function onFirstInteraction() {
-  if (!hasInteracted) {
-    music.volume = 0.3;
-    music.play().then(() => {
-  hasInteracted = true;
-  musicStatus.textContent = "Music Playing";
-  toggleMusicBtn.classList.remove('hidden');
-  musicIcon.classList.replace('fa-play', 'fa-pause');
-  toggleMusicBtn.querySelector('span').textContent = "Pause";
-  toggleMusicBtn.classList.replace('bg-blue-500', 'bg-red-500');
-  toggleMusicBtn.classList.replace('hover:bg-blue-600', 'hover:bg-red-600');
-}).catch(e => {
-  console.error("Gagal memulai musik:", e);
-  // Hanya tampilkan pesan error jika musik belum pernah dimainkan
-  if (!hasInteracted) {
-    musicStatus.textContent = "Silakan coba klik lagi.";
-  }
-});
-
-    toggleMusicBtn.removeEventListener('click', onFirstInteraction);
-    toggleMusicBtn.addEventListener('click', toggleMusic);
-  }
-}
-
-// Event listener interaksi awal
-toggleMusicBtn.addEventListener('click', onFirstInteraction);
-
-// Hentikan musik saat tab ditutup
-window.addEventListener('beforeunload', () => {
-  if (!music.paused) {
-    music.pause();
-    music.currentTime = 0;
-  }
-});
-
-// Pause saat beralih tab
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'hidden') {
-    if (!music.paused) music.pause();
-  } else {
-    if (hasInteracted && music.paused) music.play();
-  }
-});
+      const isActive = body.classList.contains('dark-mode');
+      toggleBtn.querySelector('i').className = isActive ? sunIcon : moonIcon;
+      toggleBtn.querySelector('span').style.transform = isActive ? 'translateX(22px)' : 'translateX(0.5px)';
+      
+      localStorage.setItem('darkMode', isActive);
+    });
