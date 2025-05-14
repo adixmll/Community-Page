@@ -435,11 +435,12 @@ function initPlans() {
       let price = parseInt(priceText.replace("K", "000"));
       const priceFormatted = price.toLocaleString("id-ID");
 
-      let message = `Hi Admin! I'd like to place an order
-*Plan:* ${planName}  
-*Price:* Rp${priceFormatted}  
-*Duration:* ${duration}  
-*Payment method:* Please choose one — Dana, Shopeepay, or QRIS`;
+      let message = `Hi Admin! I'd like to place an order 💫
+      
+*📑 Plan:* ${planName}  
+*💰 Price:* Rp${priceFormatted}  
+*📆 Duration:* ${duration}  
+*📃 Payment method:* Please choose one — Dana, Shopeepay, or QRIS`;
 
       if (planName === "Inviting bots to groups") {
         message += `\n*Link Group:* isi url group, pastikan tidak diprivat`;
