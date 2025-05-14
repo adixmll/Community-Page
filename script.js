@@ -285,10 +285,13 @@ const cover = document.getElementById('album-cover');
 
 const progressBar = document.getElementById('progress-bar');
 const progressPointer = document.getElementById('progress-pointer');
+const progressContainer = document.getElementById('progress-container'); // Pastikan ID ini ada di HTML
+
 const currentTimeEl = document.getElementById('current-time');
 const totalDurationEl = document.getElementById('total-duration');
 
 let isPlaying = false;
+let isDragging = false;
 
 // Format durasi ke MM:SS
 function formatTime(seconds) {
@@ -302,7 +305,7 @@ audio.addEventListener('loadedmetadata', () => {
   totalDurationEl.textContent = formatTime(audio.duration);
 });
 
-// Update progress bar
+// Update progress bar & pointer
 function updateProgress() {
   if (!isNaN(audio.duration)) {
     const progressPercent = (audio.currentTime / audio.duration) * 100;
@@ -332,11 +335,67 @@ setInterval(updateProgress, 1000);
 
 // Drag pointer untuk seek
 progressPointer.addEventListener('mousedown', (e) => {
-  const offsetX = e.clientX - progressPointer.parentNode.getBoundingClientRect().left;
-  const percent = offsetX / progressPointer.parentNode.offsetWidth;
-  audio.currentTime = percent * audio.duration;
-  updateProgress();
+  e.preventDefault(); // Hindari drag seleksi
+  isDragging = true;
 });
+
+// Saat mouse bergerak (drag)
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    seek(e);
+  }
+});
+
+// Saat melepas klik (mouseup)
+document.addEventListener('mouseup', () => {
+  if (isDragging) {
+    isDragging = false;
+    seek({ clientX: progressPointer.getBoundingClientRect().left + 5 }); // Update posisi akhir
+  }
+});
+
+// Untuk touch device (ponsel/tablet)
+progressContainer.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  seek(e.touches[0]);
+});
+
+progressContainer.addEventListener('touchmove', (e) => {
+  if (isDragging) {
+    seek(e.touches[0]);
+  }
+});
+
+progressContainer.addEventListener('touchend', () => {
+  if (isDragging) {
+    isDragging = false;
+    seek({ clientX: progressPointer.getBoundingClientRect().left + 5 });
+  }
+});
+
+// Fungsi utama untuk mencari posisi lagu
+function seek(event) {
+  const rect = progressContainer.getBoundingClientRect();
+  let offsetX = event.clientX - rect.left;
+
+  // Batas kiri dan kanan
+  if (offsetX < 0) offsetX = 0;
+  if (offsetX > rect.width) offsetX = rect.width;
+
+  const percent = offsetX / rect.width;
+  const newTime = percent * audio.duration;
+
+  // Update UI sambil dragging
+  if (isDragging) {
+    progressBar.style.width = `${percent * 100}%`;
+    progressPointer.style.left = `${percent * 100}%`;
+    currentTimeEl.textContent = formatTime(newTime);
+  } else {
+    // Set waktu lagu jika bukan drag
+    audio.currentTime = newTime;
+    updateProgress();
+  }
+}
 
 // Stop musik jika tab ditutup
 window.addEventListener('beforeunload', () => {
