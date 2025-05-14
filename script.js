@@ -4,15 +4,15 @@
  *
  * © 2025 Zykuan & XiezuMedia. All rights reserved.
  * Feel free to use or cherish it, like a good ex...
- * But remove this watermark? That’s like forgetting who loved you first.
+ * But remove this watermark? That's like forgetting who loved you first.
  * And trust me — we notice.
  *
- * Don’t ghost the author.
+ * Don't ghost the author.
  * www.instagram.com/zuanxfnd
  */
 const groups = [
   {
-    title: 'Calestia’s Number 💖',
+    title: 'Calestia's Number 💖',
     header: 'Reach Your Favorite Bot',
     description: 'The easiest way to reach your favorite bot! Start chatting and let the magic begin.',
     image: 'https://files.catbox.moe/7sgzsu.jpg  ',
@@ -74,7 +74,8 @@ function initGroups() {
   groupsContainer.innerHTML = '';
   groups.forEach((group, index) => {
     const card = document.createElement('div');
-    card.className = `group-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-1 hover:shadow-lg cursor-pointer ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}`;
+    card.id = `group-${index}`;
+    card.className = `group-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-4 hover:shadow-lg cursor-pointer ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}`;
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
@@ -107,13 +108,16 @@ function initGroups() {
       </div>
     `;
 
-    // Tambahkan event listener untuk card
-    card.addEventListener('click', function(event) {
-      if (event.target.tagName === 'A' || event.target.closest('a')) return;
-      toggleGroupDetail(index, event);
-    });
-
     groupsContainer.appendChild(card);
+
+    // Add event listener untuk klik pada seluruh card
+    card.addEventListener('click', function(event) {
+      // Cek apakah klik terjadi pada link atau child dari link
+      if (event.target.tagName === 'A' || event.target.closest('a')) {
+        return; // Biarkan link berfungsi normal
+      }
+      toggleGroupDetail(index);
+    });
 
     setTimeout(() => {
       card.style.opacity = '1';
@@ -122,15 +126,12 @@ function initGroups() {
   });
 }
 
-function toggleGroupDetail(index, event) {
-  if (event.target.tagName === 'A' || event.target.closest('a')) {
-    return;
-  }
-
+function toggleGroupDetail(index) {
   const detail = document.getElementById(`detail-${index}`);
   const allCards = document.querySelectorAll('.group-card');
   const allArrows = document.querySelectorAll('.fa-chevron-down');
-
+  
+  // Tutup semua kartu lain yang terbuka
   document.querySelectorAll('[id^="detail-"]').forEach((el, i) => {
     if (i !== index && el.classList.contains('max-h-[300px]')) {
       el.classList.remove('max-h-[300px]');
@@ -140,19 +141,23 @@ function toggleGroupDetail(index, event) {
     }
   });
 
+  // Buka/tutup kartu yang dipilih
   if (detail.classList.contains('max-h-[300px]')) {
+    // Jika sudah terbuka, tutup
     detail.classList.remove('max-h-[300px]');
     detail.classList.add('max-h-0');
     allCards[index].classList.remove('ring-2', 'ring-blue-500');
     allArrows[index].classList.remove('rotate-180');
     activeIndex = null;
   } else {
+    // Jika tertutup, buka
     detail.classList.remove('max-h-0');
     detail.classList.add('max-h-[300px]');
     allCards[index].classList.add('ring-2', 'ring-blue-500');
     allArrows[index].classList.add('rotate-180');
     activeIndex = index;
 
+    // Scroll ke kartu yang dibuka jika perlu
     setTimeout(() => {
       detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }, 100);
@@ -206,13 +211,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(hideLoader, 1500);
 });
 
-// Fungsi untuk toggle detail group (jika kamu punya)
-window.toggleGroupDetail = function toggleGroupDetail(id) {
-  const card = document.getElementById(`group-${id}`);
-  if (card) {
-    card.classList.toggle('expanded');
-  }
-};
+// Fungsi untuk toggle detail group (versi global)
+window.toggleGroupDetail = toggleGroupDetail;
 
 // Inisialisasi dark mode
 const toggleBtn = document.getElementById('darkModeToggle');
@@ -409,4 +409,3 @@ progressContainer.addEventListener('click', (e) => {
 window.addEventListener('beforeunload', () => {
   audio.pause();
 });
-    
