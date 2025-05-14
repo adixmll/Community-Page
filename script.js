@@ -302,4 +302,3 @@ progressPointer.addEventListener('mousedown', (e) => {
 window.addEventListener('beforeunload', () => {
   audio.pause();
 });
-```
