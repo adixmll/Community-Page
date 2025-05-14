@@ -10,14 +10,13 @@
  * Don’t ghost the author.
  * www.instagram.com/zuanxfnd
  */
-
 const groups = [
   {
     title: 'Calestia’s Number 💖',
     header: 'Reach Your Favorite Bot',
     description: 'The easiest way to reach your favorite bot! Start chatting and let the magic begin.',
-    image: 'https://files.catbox.moe/7sgzsu.jpg ',
-    url: 'https://wa.me/6282133532380 ',
+    image: 'https://files.catbox.moe/7sgzsu.jpg  ',
+    url: 'https://wa.me/6282133532380  ',
     icon: 'fa-phone',
     color: 'bg-pink-500',
     buttonText: 'Chat With Bot',
@@ -27,8 +26,8 @@ const groups = [
     title: 'Official Group 🌟',
     header: 'Join Our Official Community',
     description: 'Join the official group where all Calestars unite. Stay connected and be part of something amazing!',
-    image: 'https://files.catbox.moe/wwfco3.png ',
-    url: 'https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH ',
+    image: 'https://files.catbox.moe/wwfco3.png  ',
+    url: 'https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH  ',
     icon: 'fa-users',
     color: 'bg-purple-500',
     buttonText: 'Join Community',
@@ -38,8 +37,8 @@ const groups = [
     title: 'Group Chat 💬',
     header: 'Chat and Bond with Calestars',
     description: 'A cozy space to chat, bond, and meet other Calestars. All are welcome to join the fun!',
-    image: 'https://files.catbox.moe/wwfco3.png ',
-    url: 'https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3 ',
+    image: 'https://files.catbox.moe/wwfco3.png  ',
+    url: 'https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3  ',
     icon: 'fa-comments',
     color: 'bg-yellow-500',
     buttonText: 'Join Group Chat',
@@ -49,8 +48,8 @@ const groups = [
     title: 'Official Channel 📢',
     header: 'Stay Updated with Us',
     description: 'Stay updated with all the latest news and announcements in our official channel. No distractions, just the essentials!',
-    image: 'https://files.catbox.moe/u4d541.jpg ',
-    url: 'https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f ',
+    image: 'https://files.catbox.moe/u4d541.jpg  ',
+    url: 'https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f  ',
     icon: 'fa-bullhorn',
     color: 'bg-blue-500',
     buttonText: 'Follow to Channel',
@@ -60,31 +59,28 @@ const groups = [
     title: 'Premium/Sewa Price List 🌸',
     header: 'Explore Our Services & Prices',
     description: 'Looking for premium or rental services? Check out the price list and discover all available options!',
-    image: 'https://files.catbox.moe/o37b3u.jpg ',
-    url: 'https://www.xiezumedia.xyz ',
+    image: 'https://files.catbox.moe/o37b3u.jpg  ',
+    url: 'https://www.xiezumedia.xyz  ',
     icon: 'fa-gem',
     color: 'bg-rose-400',
     buttonText: 'View Price List',
     buttonIcon: 'fa-list'
   }
 ];
-
 let activeIndex = null;
 
 function initGroups() {
   const groupsContainer = document.getElementById('groups');
   groupsContainer.innerHTML = '';
-
   groups.forEach((group, index) => {
     const card = document.createElement('div');
     card.className = `group-card bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 mb-1 hover:shadow-lg cursor-pointer ${activeIndex === index ? 'ring-2 ring-blue-500' : ''}`;
-    
     card.style.opacity = '0';
     card.style.transform = 'translateY(20px)';
     card.style.animation = `fadeInUp 0.5s ease-out ${index * 0.1}s forwards`;
 
     card.innerHTML = `
-      <div class="p-5" onclick="toggleGroupDetail(${index}, event)">
+      <div class="p-5">
         <div class="flex items-center gap-4">
           <div class="relative">
             <img src="${group.image}" alt="${group.title}" class="w-14 h-14 rounded-xl object-cover border-2 border-white shadow-sm">
@@ -99,13 +95,12 @@ function initGroups() {
           <i class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ${activeIndex === index ? 'transform rotate-180' : ''}"></i>
         </div>
       </div>
-
       <div id="detail-${index}" class="transition-all duration-300 overflow-hidden max-h-0">
         <div class="px-5 pb-5 pt-0 border-t border-gray-100">
           <p class="text-gray-600 text-sm mb-4">${group.description}</p>
           <a href="${group.url}" target="_blank" 
              class="inline-flex items-center justify-center w-full ${group.color.replace('500', '500')} hover:${group.color.replace('500', '600')} text-white py-2 px-4 rounded-lg shadow-sm transition-all">
-            <i class="fas ${group.buttonIcon} mr-2"></i> <!-- Dinamis -->
+            <i class="fas ${group.buttonIcon} mr-2"></i>
             ${group.buttonText}
           </a>
         </div>
@@ -113,6 +108,12 @@ function initGroups() {
     `;
 
     groupsContainer.appendChild(card);
+
+    // Tambahkan event listener untuk klik pada seluruh card
+    card.addEventListener('click', function(event) {
+      if (event.target.tagName === 'A' || event.target.closest('a')) return;
+      toggleGroupDetail(index, event);
+    });
 
     setTimeout(() => {
       card.style.opacity = '1';
@@ -122,7 +123,7 @@ function initGroups() {
 }
 
 function toggleGroupDetail(index, event) {
-  if (event.target.tagName === 'A' || event.target.parentElement.tagName === 'A') {
+  if (event.target.tagName === 'A' || event.target.closest('a')) {
     return;
   }
 
@@ -144,7 +145,7 @@ function toggleGroupDetail(index, event) {
     detail.classList.add('max-h-0');
     allCards[index].classList.remove('ring-2', 'ring-blue-500');
     allArrows[index].classList.remove('rotate-180');
-    activeIndex = null; // Reset activeIndex jika card ditutup
+    activeIndex = null;
   } else {
     detail.classList.remove('max-h-0');
     detail.classList.add('max-h-[300px]');
@@ -408,3 +409,4 @@ progressContainer.addEventListener('click', (e) => {
 window.addEventListener('beforeunload', () => {
   audio.pause();
 });
+    
