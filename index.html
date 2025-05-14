@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Calestars - Community</title>
+
   <!-- OG Tags -->
   <meta property="og:description" content="Komunitas Calestia – Link-in-Bio & Community Hub">
   <meta property="og:type" content="website">
@@ -13,19 +14,12 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:image" content="https://calestia.my.id/seo.png ">
   <link rel="icon" href="icon.png" type="image/png">
-  <!-- Tailwind CSS via CDN + Config -->
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {}
-      }
-    }
-  </script>
+
+  <!-- Tailwind & Font -->
   <script src="https://cdn.tailwindcss.com "></script>
-  <!-- Font & Icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css "/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins :wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
   <!-- Custom Styles -->
   <style>
     :root {
@@ -35,8 +29,43 @@
       --dark: #1a1a2e;
       --light: #f8f9fa;
     }
+
     body {
       font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      min-height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+
+    .dark-mode {
+      background: linear-gradient(135deg, #1e1e2f 0%, #121221 100%);
+      color: #f1f1f1;
+    }
+
+    .dark-mode nav {
+  background: #1a1a2e !important;
+  backdrop-filter: blur(0) !important;
+  border-color: #3a3a5a !important;
+    }
+
+    .dark-mode .card-hover,
+    .dark-mode .bg-white,
+    .dark-mode .bg-blue-50,
+    .dark-mode .bg-purple-50 {
+      background-color: #2a2a40 !important;
+      border-color: #3a3a5a !important;
+    }
+
+    .dark-mode .text-gray-800 { color: #f1f1f1; }
+    .dark-mode .text-gray-600 { color: #cfcfd6; }
+    .dark-mode .border-gray-100, .dark-mode .border-gray-200 { border-color: #3a3a5a !important; }
+    .dark-mode .shadow-sm { box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05) !important; }
+    .dark-mode .page-loader { background: rgba(30, 30, 45, 0.9); }
+
+    .dark-mode .loader-ring {
+      border-right-color: #9b7dd4;
+      border-bottom-color: #e066ff;
+      border-left-color: #7d6dff;
     }
 
     /* Gradient Text */
@@ -52,6 +81,7 @@
       transition: all 0.3s ease;
       transform-style: preserve-3d;
     }
+
     .card-hover:hover {
       transform: translateY(-5px) scale(1.02);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
@@ -153,25 +183,28 @@
     }
   </style>
 </head>
-<body class="min-h-screen pt-16 pb-10 relative overflow-x-hidden bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+<body class="min-h-screen pt-16 pb-10 relative overflow-x-hidden">
   <!-- Page Loader -->
-  <div id="page-loader" class="page-loader bg-white dark:bg-gray-900">
-    <div class="loader animate-spin"></div>
+  <div id="page-loader" class="page-loader">
+    <div class="loader"></div>
   </div>
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm py-3 px-6 z-50 border-b border-gray-200 dark:border-gray-700">
+  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm py-3 px-6 z-50 border-b border-gray-200">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-2">  
         <span class="text-xl font-bold gradient-text">Calestia</span>  
       </div>
       <div class="flex items-center space-x-4">
         <button id="darkModeToggle" class="w-10 h-5 rounded-full bg-gray-300 relative transition duration-300 focus:outline-none">
-          <span class="absolute left-0 top-0 bottom-0 w-4 h-4 rounded-full bg-white shadow transform translate-x-0.5 flex items-center justify-center transition-transform duration-300">
-            <i class="fas fa-moon text-xs text-gray-700"></i>
-          </span>
+  <span class="absolute left-0 top-0 bottom-0 w-4 h-4 rounded-full bg-white shadow transform translate-x-0.5 flex items-center justify-center transition-transform duration-300">
+    <i class="fas fa-moon text-xs text-gray-700"></i>
+  </span>
         </button>
-        <a href="https://www.instagram.com/zuanxfnd " target="_blank" class="flex items-center space-x-2 bg-[#4361ee] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all">  
+        <a href="https://www.instagram.com/zuanxfnd "
+           target="_blank"
+           class="flex items-center space-x-2 bg-[#4361ee] text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all">  
           <i class="fab fa-instagram"></i>  
           <span>Admin</span>  
         </a>
@@ -182,16 +215,19 @@
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
     <!-- Profile Header -->
-    <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-100 dark:border-gray-700 card-hover">
+    <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 card-hover">
       <div class="flex flex-col items-center text-center">
         <div class="relative mb-6 w-32 h-32">
-          <div class="loader-ring animate-spin-loader dark:border-gray-600"></div>
-          <img src="https://files.catbox.moe/wgtmva.png " alt="Profile" class="relative z-10 w-32 h-32 rounded-full object-cover border-4 border-white dark:border-gray-700 shadow-xl" />
+          <div class="loader-ring animate-spin-loader"></div>
+          <img src="https://files.catbox.moe/wgtmva.png "
+               alt="Profile"
+               class="relative z-10 w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl" />
         </div>
-        <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-2">
+
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">
           <span class="gradient-text">Hey, Calestars!</span>
         </h1>
-        <p class="text-gray-600 dark:text-gray-300 max-w-2xl">
+        <p class="text-gray-600 max-w-2xl">
           Welcome to Calestia — a little world made just for you.
           <br><br>
           Whether you’re here to connect, explore, or simply feel closer to the magic,
@@ -202,11 +238,12 @@
           <br><br>
           You’re not just a user — you’re part of something stardust-sweet. ✨
         </p>
+
         <div class="mt-6 flex space-x-3">
-          <div class="px-4 py-2 bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-sm font-medium">
+          <div class="px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
             <i class="fas fa-users mr-1"></i> 700+ Users
           </div>
-          <div class="px-4 py-2 bg-purple-50 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full text-sm font-medium">
+          <div class="px-4 py-2 bg-purple-50 text-purple-600 rounded-full text-sm font-medium">
             <i class="fas fa-heart mr-1"></i> Always With You
           </div>
         </div>
@@ -214,37 +251,24 @@
     </div>
 
     <!-- Music Player -->
-    <section class="mt-10 flex justify-center">
-      <div class="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 transition-colors duration-300 max-w-md w-full">
-        <div class="flex items-center space-x-4">
-          <img src="https://files.catbox.moe/8olprf.jpg " alt="About You - The 1975" class="w-12 h-12 rounded object-cover shadow-sm">
-          <div class="flex-1 min-w-0">
-            <p id="musicTitle" class="font-semibold text-gray-800 dark:text-gray-200 truncate">About You</p>
-            <p id="musicArtist" class="text-xs text-gray-500 dark:text-gray-400">The 1975</p>
-            <div class="flex justify-between text-xs text-gray-500 mt-1">
-              <span id="currentTime">00:00</span>
-              <span id="duration">--:--</span>
-            </div>
-            <div id="progressBarContainer" class="relative w-full h-1 mt-1 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer group">
-              <div class="absolute top-0 left-0 h-full bg-gray-300 dark:bg-gray-600 w-full rounded"></div>
-              <div id="progressBarFill" class="absolute top-0 left-0 h-full bg-blue-500 w-0 rounded" style="width: 0%"></div>
-              <div id="progressBarIndicator" class="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full" style="left: 0;"></div>
-            </div>
-            <p id="musicStatus" class="text-xs text-gray-500 dark:text-gray-400 mt-1">Click to play</p>
-          </div>
-        </div>
-        <button id="toggleMusicBtn" class="mt-3 px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition text-sm flex items-center mx-auto">
-          <i id="musicIcon" class="fas fa-play mr-1"></i> Play
-        </button>
-      </div>
-    </section>
+<section class="mt-10 flex justify-center">
+  <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 dark:bg-[#2a2a40] dark:border-gray-700 transition-colors duration-300">
+    <div class="flex items-center space-x-4">
+      <i class="fas fa-music text-lg text-blue-500"></i>
+      <span id="musicStatus" class="text-sm font-medium text-gray-700 dark:text-gray-300">Music Playing</span>
+      <button id="toggleMusicBtn"
+              class="px-3 py-1 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition text-sm flex items-center">
+        <i id="musicIcon" class="fas fa-pause mr-1"></i> Pause
+      </button>
+    </div>
+  </div>
+</section>
 
-    <!-- Audio -->
-    <audio id="backgroundMusic" src="https://files.catbox.moe/rrwrw6.mp3 " preload="auto"></audio>
-
+<audio id="backgroundMusic" src="https://files.catbox.moe/rrwrw6.mp3 " loop></audio>
+    
     <!-- Groups Section -->
     <section class="mt-12">
-      <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-6 flex items-center">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
         <i class="fas fa-users mr-3 text-blue-500"></i>
         <span>Where We Shine Together</span>
       </h2>
@@ -264,12 +288,13 @@
   </div>
 
   <!-- Footer -->
-  <footer class="mt-16 text-center text-gray-600 dark:text-gray-400 px-4">
+  <footer class="mt-16 text-center text-gray-600 px-4">
     <p class="mb-2">Create With ❤️ by <span class="font-semibold">Zykuan</span></p>
     <p>© 2025 XiezuMedia. All Rights Reserved.</p>
   </footer>
 
   <!-- Scripts -->
   <script src="script.js"></script>
+  
 </body>
 </html>
