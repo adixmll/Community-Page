@@ -397,6 +397,13 @@ function seek(event) {
   }
 }
 
+// Klik langsung di progress bar untuk geser durasi
+progressContainer.addEventListener('click', (e) => {
+  if (!isDragging) {
+    seek(e);
+  }
+});
+
 // Stop musik jika tab ditutup
 window.addEventListener('beforeunload', () => {
   audio.pause();
