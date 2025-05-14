@@ -1,3 +1,16 @@
+<!--
+  This code was written by Azuan — with love, bugs, and late-night heartbreaks.
+  Supported by XiezuMedia, who believed in the chaos.
+
+  © 2024 Zykuan & XiezuMedia. All rights reserved.
+  Feel free to use or cherish it, like a good ex...
+  But remove this watermark? That’s like forgetting who loved you first.
+  And trust me — we notice.
+
+  Don’t ghost the author.
+  www.instagram.com/zuanxfnd
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,9 +207,13 @@
 </head>
 
 <body class="min-h-screen pt-16 pb-10 relative overflow-x-hidden">
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="loader"></div>
+  </div>
 
   <!-- Navbar -->
-  <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm py-3 px-6 z-50 border-b border-gray-200">
+   <nav class="fixed top-0 left-0 right-0 bg-white/80 backdrop-blur-md shadow-sm py-3 px-6 z-50 border-b border-gray-200">
     <div class="max-w-6xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-2">  
         <span class="text-xl font-bold gradient-text">Calestia</span>  
@@ -219,17 +236,14 @@
 
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
-
-    <!-- Page Loader -->
-  <div id="page-loader" class="page-loader">
-    <div class="loader"></div>
-  </div>
-    
     <!-- Profile Header -->
     <div class="bg-white rounded-xl p-8 shadow-lg border border-gray-100 card-hover">
       <div class="flex flex-col items-center text-center">
         <div class="relative mb-6 w-32 h-32">
+          <!-- Loader Ring -->
           <div class="loader-ring animate-spin-loader"></div>
+
+          <!-- Avatar Image -->
           <img src="https://files.catbox.moe/wgtmva.png "
                alt="Profile"
                class="relative z-10 w-32 h-32 rounded-full object-cover border-4 border-white shadow-xl" />
@@ -309,7 +323,7 @@
     </div>
   </div>
 </section>
-    
+
     <!-- Groups Section -->
     <section class="mt-12">
       <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
@@ -339,6 +353,5 @@
 
   <!-- Scripts -->
   <script src="script.js"></script>
-  
 </body>
 </html>
