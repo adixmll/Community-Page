@@ -60,6 +60,18 @@ const groups = [
     color: "bg-blue-500",
     buttonText: "Follow to Channel",
     buttonIcon: "fa-bullhorn"
+  },
+  {
+  title: "Telegram Bot ✨",
+  header: "Calestia Now on Telegram",
+  description:
+    "Explore a new side of Calestia! This is the official Telegram version of your favorite WhatsApp bot—same love, new platform.",
+  image: "https://files.catbox.moe/22zz0w.jpg",
+  url: "https://t.me/ClstiaBot",
+  icon: "fa-paper-plane",
+  color: "bg-cyan-500",
+  buttonText: "Talk on Telegram",
+  buttonIcon: "fa-robot"
   }
 ];
 
