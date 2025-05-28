@@ -26,6 +26,18 @@ const groups = [
     buttonIcon: "fa-comment-dots"
   },
   {
+  title: "Telegram Bot ✨",
+  header: "Calestia Now on Telegram",
+  description:
+    "Explore a new side of Calestia! This is the official Telegram version of your favorite WhatsApp bot—same love, new platform.",
+  image: "https://files.catbox.moe/22zz0w.jpg",
+  url: "https://t.me/ClstiaBot",
+  icon: "fa-paper-plane",
+  color: "bg-cyan-500",
+  buttonText: "Talk on Telegram",
+  buttonIcon: "fa-robot"
+  },
+  {
     title: "Official Group 🌟",
     header: "Join Our Official Community",
     description:
@@ -38,18 +50,6 @@ const groups = [
     buttonIcon: "fa-user-friends"
   },
   {
-    title: "Group Chat 💬",
-    header: "Chat and Bond with Calestars",
-    description:
-      "A cozy space to chat, bond, and meet other Calestars. All are welcome to join the fun!",
-    image: "https://files.catbox.moe/wwfco3.png   ",
-    url: "https://chat.whatsapp.com/FP7AinRnbtYIKYksELwsL3   ",
-    icon: "fa-comments",
-    color: "bg-yellow-500",
-    buttonText: "Join Group Chat",
-    buttonIcon: "fa-comments"
-  },
-  {
     title: "Official Channel 📢",
     header: "Stay Updated with Us",
     description:
@@ -60,18 +60,6 @@ const groups = [
     color: "bg-blue-500",
     buttonText: "Follow to Channel",
     buttonIcon: "fa-bullhorn"
-  },
-  {
-  title: "Telegram Bot ✨",
-  header: "Calestia Now on Telegram",
-  description:
-    "Explore a new side of Calestia! This is the official Telegram version of your favorite WhatsApp bot—same love, new platform.",
-  image: "https://files.catbox.moe/22zz0w.jpg",
-  url: "https://t.me/ClstiaBot",
-  icon: "fa-paper-plane",
-  color: "bg-cyan-500",
-  buttonText: "Talk on Telegram",
-  buttonIcon: "fa-robot"
   }
 ];
 
