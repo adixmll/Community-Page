@@ -145,31 +145,10 @@
       50% { transform: translateY(-10px); }
     }
 
-.loading-text {
-  margin-top: 1.5rem;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-align: center;
-  background: linear-gradient(90deg, #735dd3, #db4bbc, #6678dd);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textGlow 2.5s ease-in-out infinite alternate;
-  user-select: none;
-  letter-spacing: 0.1em;
-}
-
-@keyframes textGlow {
-  0% {
-    text-shadow: 0 0 6px #735dd3, 0 0 12px #db4bbc;
-  }
-  100% {
-    text-shadow: 0 0 12px #e066ff, 0 0 24px #db4bbc;
-  }
-}
-
+/* Mosaic Loader */
 .mosaic-loader {
   --cell-size: 32px;
-  --cell-spacing: 0.5px;
+  --cell-spacing: 1px;
   --border-width: 1px;
   --cells: 4;
   --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
@@ -244,6 +223,30 @@
     background-color: transparent;
   }
 }
+
+/* Loading Text */
+.loading-text {
+  margin-top: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, #735dd3, #db4bbc, #6678dd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2.5s ease-in-out infinite alternate;
+  user-select: none;
+  letter-spacing: 0.1em;
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 6px #735dd3, 0 0 12px #db4bbc;
+  }
+  100% {
+    text-shadow: 0 0 12px #e066ff, 0 0 24px #db4bbc;
+  }
+}
+
     .bubble {
       position: absolute;
       bottom: -100px;
@@ -294,7 +297,7 @@
 
 <body class="min-h-screen pt-16 pb-10 relative overflow-x-hidden">
 
-  <!-- Page Loader -->
+<!-- Page Loader -->
 <div id="page-loader" class="mosaic-loader flex flex-col items-center justify-center">
   <div class="grid grid-cols-4 gap-1" style="width: calc(4 * (32px + 2px))">
     <div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-3"></div><div class="cell d-4"></div>
