@@ -145,6 +145,19 @@
       50% { transform: translateY(-10px); }
     }
 
+#page-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+
 .mosaic-loader {
   display: flex;
   flex-wrap: wrap;
@@ -227,7 +240,10 @@
 #loading-text {
   font-size: 1.25rem;
   letter-spacing: 0.1em;
-  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
 }
 
     .bubble {
