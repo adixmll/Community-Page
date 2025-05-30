@@ -147,16 +147,10 @@
 
 /* Mosaic Loader */
 .mosaic-loader {
-  --cell-size: 64px;
-  --cell-spacing: 1px;
-  --border-width: 1px;
-  --cells: 4;
-  --total-size: calc(var(--cells) * (var(--cell-size) + 2 * var(--cell-spacing)));
-
   display: flex;
   flex-wrap: wrap;
-  width: var(--total-size);
-  height: var(--total-size);
+  width: calc(4 * (64px + 2px * 2));
+  height: calc(4 * (64px + 2px * 2));
   position: fixed;
   top: 50%;
   left: 50%;
@@ -165,11 +159,11 @@
 }
 
 .mosaic-loader .cell {
-  flex: 0 0 var(--cell-size);
-  margin: var(--cell-spacing);
+  flex: 0 0 64px;
+  margin: 1px;
   background-color: transparent;
   box-sizing: border-box;
-  border: var(--border-width) solid white;
+  border: 1px solid white;
   animation: 1.5s ripple ease infinite;
 }
 
