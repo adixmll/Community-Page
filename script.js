@@ -195,10 +195,18 @@ function hideLoader() {
       document.body.style.top = "";
       document.documentElement.style.scrollBehavior = "smooth";
       window.scrollTo({ top: scrollPosition, behavior: "auto" });
-      initGroups();
+
+      // Tampilkan konten utama setelah loading selesai
+      const mainContent = document.getElementById("main-content");
+      if (mainContent) {
+        mainContent.style.display = "block";
+      }
+
+      initGroups(); // jika kamu punya fungsi inisialisasi
     }, 500);
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const style = document.createElement("style");
