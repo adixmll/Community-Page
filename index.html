@@ -145,46 +145,114 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* Page Loader */
-.page-loader {
+  .page-loader {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Bisa diubah sesuai dengan tema */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  inset: 0;
+  background-color: rgba(10, 10, 30, 0.85);
   z-index: 9999;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  user-select: none;
 }
 
+.stars-wrapper {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+/* Star base */
 .star {
-  width: 20px;
-  height: 20px;
-  margin: 0 15px;
-  background: #fff;
+  position: absolute;
+  background: radial-gradient(circle at center, #fff, transparent 60%);
   border-radius: 50%;
-  box-shadow: 0 0 10px #fff, 0 0 20px #f0f;
-  animation: twinkle 1.5s infinite ease-in-out alternate;
+  box-shadow:
+    0 0 6px 2px #fff,
+    0 0 12px 6px #a3a0ff,
+    0 0 18px 9px #dca3ff;
+  animation: twinkle 2s infinite ease-in-out alternate;
+  filter: drop-shadow(0 0 4px #e0c8ff);
+  opacity: 0.7;
+  transform-origin: center;
+  animation-timing-function: ease-in-out;
 }
 
-.star:nth-child(2) {
-  animation-delay: 0.3s;
+/* Different star sizes */
+.big-star {
+  width: 28px;
+  height: 28px;
+  top: 50%;
+  left: 50%;
+  margin-top: -14px;
+  margin-left: -14px;
+  animation-duration: 2.5s;
 }
 
-.star:nth-child(3) {
-  animation-delay: 0.6s;
+.medium-star {
+  width: 16px;
+  height: 16px;
 }
 
+.small-star {
+  width: 10px;
+  height: 10px;
+  animation-duration: 1.8s;
+}
+
+/* Twinkle animation */
 @keyframes twinkle {
   0% {
-    transform: scale(0.7);
+    transform: scale(0.8);
     opacity: 0.3;
+    filter: drop-shadow(0 0 4px #b0a0ff);
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #e0b8ff);
   }
   100% {
-    transform: scale(1.2);
-    opacity: 1;
+    transform: scale(0.8);
+    opacity: 0.3;
+    filter: drop-shadow(0 0 4px #b0a0ff);
+  }
+}
+
+/* Floating up animation for stars */
+.stars-wrapper .star {
+  animation-name: twinkle, floatUpDown;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  animation-duration: 2.5s, 5s;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Loading text style */
+.loading-text {
+  background: linear-gradient(90deg, #735dd3, #db4bbc, #6678dd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 2.5s ease-in-out infinite alternate;
+  user-select: none;
+  letter-spacing: 0.15em;
+}
+
+/* Glow animation for text */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 6px #735dd3, 0 0 12px #db4bbc;
+  }
+  100% {
+    text-shadow: 0 0 12px #e066ff, 0 0 24px #db4bbc;
   }
 }
 
@@ -239,10 +307,17 @@
 <body class="min-h-screen pt-16 pb-10 relative overflow-x-hidden">
 
   <!-- Page Loader -->
-<div id="page-loader" class="page-loader">
-  <div class="star"></div>
-  <div class="star"></div>
-  <div class="star"></div>
+<div id="page-loader" class="page-loader flex flex-col justify-center items-center">
+  <div class="stars-wrapper relative w-40 h-40 mb-6">
+    <!-- Bintang partikel -->
+    <div class="star big-star"></div>
+    <div class="star small-star" style="top: 15%; left: 10%; animation-delay: 0s;"></div>
+    <div class="star small-star" style="top: 50%; left: 35%; animation-delay: 0.5s;"></div>
+    <div class="star small-star" style="top: 70%; left: 60%; animation-delay: 1s;"></div>
+    <div class="star small-star" style="top: 25%; left: 75%; animation-delay: 1.5s;"></div>
+    <div class="star medium-star" style="top: 40%; left: 80%; animation-delay: 0.8s;"></div>
+  </div>
+  <div class="loading-text gradient-text font-bold text-xl tracking-wider select-none">Waiting...</div>
 </div>
 
 <!-- Wrapper untuk konten utama -->
