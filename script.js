@@ -199,7 +199,8 @@ function hideLoader() {
       // Tampilkan konten utama setelah loading selesai
       const mainContent = document.getElementById("main-content");
       if (mainContent) {
-        mainContent.style.display = "block";
+      mainContent.style.visibility = "visible";
+      mainContent.style.opacity = "1";
       }
 
       initGroups(); // jika kamu punya fungsi inisialisasi
