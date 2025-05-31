@@ -11,23 +11,6 @@
  * www.instagram.com/zuanxfnd
  */
 
- const loadingText = document.getElementById("loading-text");
-  const texts = [
-    "Stargazing for you...",
-    "Unfolding secrets of the cosmos...",
-    "Connecting to Calestia...",
-    "Bot is dreaming about you...",
-    "Hold on while we find your place in the galaxy 🪐",
-    "The stars are aligning for you..."
-  ];
-
-  let index = 0;
-
-  setInterval(() => {
-  const randomIndex = Math.floor(Math.random() * texts.length);
-  loadingText.textContent = texts[randomIndex];
-}, 3000);
-
 
 // Daftar grup WhatsApp yang akan ditampilkan di UI
 const groups = [
