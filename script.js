@@ -1,38 +1,24 @@
-/*
- * This code was written by Azuan — with love, bugs, and late-night heartbreaks.
- * Supported by XiezuMedia, who believed in the chaos.
- *
- * © 2025 Zykuan & XiezuMedia. All rights reserved.
- * Feel free to use or cherish it, like a good ex...
- * But remove this watermark? That’s like forgetting who loved you first.
- * And trust me — we notice.
- *
- * Don’t ghost the author.
- * www.instagram.com/zuanxfnd
- */
-
-
 // Daftar grup WhatsApp yang akan ditampilkan di UI
 const groups = [
   {
-    title: "Calestia’s Number 💖",
+    title: "ALIYA Number 💖",
     header: "Reach Your Favorite Bot",
     description:
       "The easiest way to reach your favorite bot! Start chatting and let the magic begin.",
-    image: "https://files.catbox.moe/7sgzsu.jpg   ",
-    url: "https://wa.me/6282133532380   ",
+    image: "https://tmpfiles.org/dl/437810/df9bfcba6b.jpg   ",
+    url: "https://wa.me/6282333088520   ",
     icon: "fa-phone",
     color: "bg-pink-500",
     buttonText: "Chat With Bot",
     buttonIcon: "fa-comment-dots"
   },
   {
-  title: "Telegram Bot (FREE) ✨",
+  title: "Telegram owner✨",
   header: "Calestia Now on Telegram",
   description:
-    "Explore a new side of Calestia! This is the official Telegram version of your favorite WhatsApp bot—same love, new platform and its features are free.",
-  image: "https://files.catbox.moe/22zz0w.jpg",
-  url: "https://t.me/ClstiaBot",
+    "Explore a new side of aliya!  version of your favorite WhatsApp bot—same love, new platform and its features are free.",
+  image: "https://tmpfiles.org/dl/437810/df9bfcba6b.jpg",
+  url: "https://t.me/masadijir",
   icon: "fa-paper-plane",
   color: "bg-cyan-500",
   buttonText: "Talk on Telegram",
@@ -44,7 +30,7 @@ const groups = [
     description:
       "Join the official group where all Calestars unite. Stay connected and be part of something amazing!",
     image: "https://files.catbox.moe/wwfco3.png   ",
-    url: "https://chat.whatsapp.com/HDockZJ48S82HUhsxu85kH   ",
+    url: "https://chat.whatsapp.com/B4pzNsUFmcT0qwX5GTvrCn   ",
     icon: "fa-users",
     color: "bg-purple-500",
     buttonText: "Join Community",
@@ -55,8 +41,8 @@ const groups = [
     header: "Stay Updated with Us",
     description:
       "Stay updated with all the latest news and announcements in our official channel. No distractions, just the essentials!",
-    image: "https://files.catbox.moe/u4d541.jpg   ",
-    url: "https://whatsapp.com/channel/0029VapSsRCGJP8CHvDLT11f   ",
+    image: "https://tmpfiles.org/dl/437810/df9bfcba6b.jpg   ",
+    url: "https://whatsapp.com/channel/0029Vao4uP22UPBD5IvRBP3F   ",
     icon: "fa-bullhorn",
     color: "bg-blue-500",
     buttonText: "Follow to Channel",
@@ -457,7 +443,7 @@ function initPlans() {
         message += `\n*Link Group:* isi url group, pastikan tidak diprivat`;
       }
 
-      const whatsappUrl = `https://wa.me/628979440862?text= ${encodeURIComponent(
+      const whatsappUrl = `https://wa.me/6285857313870?text= ${encodeURIComponent(
         message
       )}`;
       window.open(whatsappUrl, "_blank");
