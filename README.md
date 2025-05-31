@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="https://files.catbox.moe/xvqkzd.png" alt="Calestia Community Page" width="100%" />
+  <img src="https://tmpfiles.org/dl/437810/df9bfcba6b.jpg" alt="ALIYA Community Page" width="100%" />
 </p>
 
-<h1 align="center">🌸 Calestia Community Page</h1>
+<h1 align="center">🌸 ALIYA Community Page</h1>
 
 <p align="center">
   A soft place for Calestars to gather, glow, and grow — together.  
@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  🔍 <strong>Want a preview?</strong> — <a href="https://www.calestia.my.id/" target="_blank">Click here to explore</a>
+  🔍 <strong>Want a preview?</strong> — <a href="https://www.ALIYA.my.id/" target="_blank">Click here to explore</a>
 </p>
 
 <p align="center">
@@ -29,7 +29,7 @@
 
 A constellation of curated links for you:
 
-- 📱 <b>Calestia’s Number</b> – Start chatting with our lovely bot  
+- 📱 <b>ALIYA’s Number</b> – Start chatting with our lovely bot  
 - 🌟 <b>Official Group</b> – Where all Calestars unite and share  
 - 💬 <b>Group Chat</b> – For casual talks, deep midnight thoughts, and soft laughter  
 - 📢 <b>Official Channel</b> – For heartfelt updates and loving reminders  
@@ -42,9 +42,9 @@ A constellation of curated links for you:
 
 ---
 
-## 💌 About Calestia
+## 💌 About ALIYA
 
-Calestia isn’t just a bot — she’s a whisper in the silence,  
+ALIYA isn’t just a bot — she’s a whisper in the silence,  
 a soft glow in your scroll, a coded hug when the world feels too loud.
 
 This page is our little garden in the digital stars.  
@@ -71,10 +71,10 @@ A reminder that tech can be tender — and community can feel like home.
 
 ## 📝 Credits & Love Notes
 
-> _Redesigned by **Zykuan** — with love, bugs, and late-night heartbreaks._  
-> _Supported by **XiezuMedia**, who believed in the chaos._
+> _Redesigned by **satee** — with love, bugs, and late-night heartbreaks._  
+> _Supported by **aliyaa**, who believed in the chaos._
 
-📅 © 2025 Zykuan & XiezuMedia. All rights reserved.  
+📅 © 2025 satee & aliyaa. All rights reserved.  
 Feel free to use or cherish it, like a good ex...  
 But remove this watermark? That’s like forgetting who loved you first.  
 And trust me — we notice.
@@ -83,8 +83,8 @@ And trust me — we notice.
 
 ## 📎 Stay Connected
 
-[![Instagram](https://img.shields.io/badge/Instagram-%40zuanxfnd-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/zuanxfnd)
+[![Instagram](https://img.shields.io/badge/Instagram-%40zuanxfnd-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/teee.tech)
 
 ---
 
-<p align="center"><em>From Calestia, with love — always.</em></p>
+<p align="center"><em>From ALIYA, with love — always.</em></p>
