@@ -199,6 +199,15 @@
 .cell:nth-child(15) { --cell-color: #d5385a; }
 .cell:nth-child(16) { --cell-color: #911750; }
 
+.cell {
+  width: 64px;
+  height: 64px;
+  margin: 2px;
+  background-color: transparent;
+  animation: ripple 2s infinite;
+  border-radius: 6px;
+}
+
 @keyframes ripple {
   0% {
     background-color: transparent;
