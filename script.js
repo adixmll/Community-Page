@@ -24,9 +24,10 @@
   let index = 0;
 
   setInterval(() => {
-    index = (index + 1) % texts.length;
-    loadingText.textContent = texts[index];
-  }, 3000); // Ganti teks setiap 3 detik
+  const randomIndex = Math.floor(Math.random() * texts.length);
+  loadingText.textContent = texts[randomIndex];
+}, 3000);
+
 
 // Daftar grup WhatsApp yang akan ditampilkan di UI
 const groups = [
