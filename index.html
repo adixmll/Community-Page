@@ -145,34 +145,34 @@
       50% { transform: translateY(-10px); }
     }
 
-.page-loader {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    .page-loader {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-.mosaic-loader {
-  display: flex;
-  flex-wrap: wrap;
-  width: calc(4 * (64px + 2px * 2));
-  height: calc(4 * (64px + 2px * 2));
-}
+    .mosaic-loader {
+      display: flex;
+      flex-wrap: wrap;
+      width: calc(4 * (64px + 2px * 2));
+      height: calc(4 * (64px + 2px * 2));
+    }
 
 /* Animation delays */
-.cell.d-1 { animation-delay: 100ms; }
-.cell.d-2 { animation-delay: 200ms; }
-.cell.d-3 { animation-delay: 300ms; }
-.cell.d-4 { animation-delay: 400ms; }
-.cell.d-5 { animation-delay: 500ms; }
-.cell.d-6 { animation-delay: 600ms; }
-.cell.d-7 { animation-delay: 700ms; }
-.cell.d-8 { animation-delay: 800ms; }
-.cell.d-9 { animation-delay: 900ms; }
+.cell.d-1  { animation-delay: 100ms; }
+.cell.d-2  { animation-delay: 200ms; }
+.cell.d-3  { animation-delay: 300ms; }
+.cell.d-4  { animation-delay: 400ms; }
+.cell.d-5  { animation-delay: 500ms; }
+.cell.d-6  { animation-delay: 600ms; }
+.cell.d-7  { animation-delay: 700ms; }
+.cell.d-8  { animation-delay: 800ms; }
+.cell.d-9  { animation-delay: 900ms; }
 .cell.d-10 { animation-delay: 1000ms; }
 .cell.d-11 { animation-delay: 1100ms; }
 .cell.d-12 { animation-delay: 1200ms; }
@@ -182,15 +182,15 @@
 .cell.d-16 { animation-delay: 1600ms; }
 
 /* Cell colors */
-.cell:nth-child(1) { --cell-color: #d4aee0; }
-.cell:nth-child(2) { --cell-color: #8975b4; }
-.cell:nth-child(3) { --cell-color: #64518a; }
-.cell:nth-child(4) { --cell-color: #565190; }
-.cell:nth-child(5) { --cell-color: #44abac; }
-.cell:nth-child(6) { --cell-color: #2ca7d8; }
-.cell:nth-child(7) { --cell-color: #1482ce; }
-.cell:nth-child(8) { --cell-color: #05597c; }
-.cell:nth-child(9) { --cell-color: #b2dd57; }
+.cell:nth-child(1)  { --cell-color: #d4aee0; }
+.cell:nth-child(2)  { --cell-color: #8975b4; }
+.cell:nth-child(3)  { --cell-color: #64518a; }
+.cell:nth-child(4)  { --cell-color: #565190; }
+.cell:nth-child(5)  { --cell-color: #44abac; }
+.cell:nth-child(6)  { --cell-color: #2ca7d8; }
+.cell:nth-child(7)  { --cell-color: #1482ce; }
+.cell:nth-child(8)  { --cell-color: #05597c; }
+.cell:nth-child(9)  { --cell-color: #b2dd57; }
 .cell:nth-child(10) { --cell-color: #57c443; }
 .cell:nth-child(11) { --cell-color: #05b853; }
 .cell:nth-child(12) { --cell-color: #19962e; }
@@ -199,37 +199,28 @@
 .cell:nth-child(15) { --cell-color: #d5385a; }
 .cell:nth-child(16) { --cell-color: #911750; }
 
-.cell {
-  width: 64px;
-  height: 64px;
-  margin: 2px;
-  background-color: transparent;
-  animation: ripple 2s infinite;
-  border-radius: 6px;
-}
+    .cell {
+      width: 64px;
+      height: 64px;
+      margin: 2px;
+      background-color: transparent;
+      animation: ripple 2s infinite;
+      border-radius: 6px;
+    }
 
-@keyframes ripple {
-  0% {
-    background-color: transparent;
-  }
-  30% {
-    background-color: var(--cell-color);
-  }
-  60% {
-    background-color: transparent;
-  }
-  100% {
-    background-color: transparent;
-  }
-}
+    @keyframes ripple {
+      0%   { background-color: transparent; }
+      30%  { background-color: var(--cell-color); }
+      60%  { background-color: transparent; }
+      100% { background-color: transparent; }
+    }
 
-#loading-text {
-  margin-top: 20px; /* jarak dari kotak */
-  font-size: 1.25rem;
-  letter-spacing: 0.1em;
-  text-align: center;
-}
-
+    #loading-text {
+      margin-top: 20px;
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
 
     .bubble {
       position: absolute;
@@ -238,6 +229,7 @@
       border-radius: 50%;
       animation: rise 15s infinite ease-in;
     }
+
 
     @keyframes rise {
       0% {
@@ -291,7 +283,6 @@
   </div>
   <div class="loading-text font-bold text-xl tracking-wider select-none" id="loading-text">The stars are aligning for you...</div>
 </div>
-
 
 <!-- Wrapper untuk konten utama -->
  <div id="main-content" style="visibility: hidden; opacity: 0; transition: opacity 0.5s ease;">
@@ -555,10 +546,9 @@
 </div>
 </footer>
 
-</div> <!-- penutup dari #main-content -->
+</div>
   </main>
-</div> <!-- penutup dari body wrapper -->
-
+</div>
 
 <!-- Scripts -->
 <script src="script.js"></script>
